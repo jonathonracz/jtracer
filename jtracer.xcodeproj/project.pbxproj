@@ -7,50 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28B173FB1FE8E699003AD1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B173FA1FE8E699003AD1DC /* AppDelegate.m */; };
-		28B173FD1FE8E699003AD1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B173FC1FE8E699003AD1DC /* Assets.xcassets */; };
-		28B174031FE8E69A003AD1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174021FE8E69A003AD1DC /* main.m */; };
-		28B1740E1FE8E69A003AD1DC /* jtracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1740D1FE8E69A003AD1DC /* jtracerTests.m */; };
-		28B1741D1FE8EF0B003AD1DC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1741C1FE8EF0B003AD1DC /* MetalKit.framework */; };
-		28B1741F1FE8EF26003AD1DC /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1741E1FE8EF26003AD1DC /* Metal.framework */; };
+		287BF7F51FEA38BC001BB98A /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287BF7F31FEA38BC001BB98A /* MetalKit.framework */; };
+		287BF7F61FEA38BC001BB98A /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287BF7F41FEA38BC001BB98A /* Metal.framework */; };
+		28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1742D1FEA381C003AD1DC /* AppDelegate.m */; };
+		28B174311FEA381C003AD1DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174301FEA381C003AD1DC /* ViewController.m */; };
+		28B174331FEA381C003AD1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B174321FEA381C003AD1DC /* Assets.xcassets */; };
+		28B174361FEA381C003AD1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B174341FEA381C003AD1DC /* Main.storyboard */; };
+		28B174391FEA381D003AD1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174381FEA381D003AD1DC /* main.m */; };
+		28B174441FEA381D003AD1DC /* jtracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174431FEA381D003AD1DC /* jtracerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		28B1740A1FE8E69A003AD1DC /* PBXContainerItemProxy */ = {
+		28B174401FEA381D003AD1DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 28B173EE1FE8E699003AD1DC /* Project object */;
+			containerPortal = 28B174211FEA381C003AD1DC /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28B173F51FE8E699003AD1DC;
+			remoteGlobalIDString = 28B174281FEA381C003AD1DC;
 			remoteInfo = jtracer;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		28B173F61FE8E699003AD1DC /* jtracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		28B173F91FE8E699003AD1DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		28B173FA1FE8E699003AD1DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		28B173FC1FE8E699003AD1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		28B174011FE8E699003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28B174021FE8E69A003AD1DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		28B174041FE8E69A003AD1DC /* jtracer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jtracer.entitlements; sourceTree = "<group>"; };
-		28B174091FE8E69A003AD1DC /* jtracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jtracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		28B1740D1FE8E69A003AD1DC /* jtracerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jtracerTests.m; sourceTree = "<group>"; };
-		28B1740F1FE8E69A003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28B1741C1FE8EF0B003AD1DC /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
-		28B1741E1FE8EF26003AD1DC /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		287BF7F31FEA38BC001BB98A /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		287BF7F41FEA38BC001BB98A /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		28B174291FEA381C003AD1DC /* jtracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B1742C1FEA381C003AD1DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		28B1742D1FEA381C003AD1DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		28B1742F1FEA381C003AD1DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		28B174301FEA381C003AD1DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		28B174321FEA381C003AD1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28B174351FEA381C003AD1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28B174371FEA381D003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28B174381FEA381D003AD1DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28B1743A1FEA381D003AD1DC /* jtracer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jtracer.entitlements; sourceTree = "<group>"; };
+		28B1743F1FEA381D003AD1DC /* jtracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jtracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B174431FEA381D003AD1DC /* jtracerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jtracerTests.m; sourceTree = "<group>"; };
+		28B174451FEA381D003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28B173F31FE8E699003AD1DC /* Frameworks */ = {
+		28B174261FEA381C003AD1DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B1741F1FE8EF26003AD1DC /* Metal.framework in Frameworks */,
-				28B1741D1FE8EF0B003AD1DC /* MetalKit.framework in Frameworks */,
+				287BF7F51FEA38BC001BB98A /* MetalKit.framework in Frameworks */,
+				287BF7F61FEA38BC001BB98A /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28B174061FE8E69A003AD1DC /* Frameworks */ = {
+		28B1743C1FEA381D003AD1DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,66 +65,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28B173ED1FE8E699003AD1DC = {
+		287BF7F21FEA38BB001BB98A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				28B173F81FE8E699003AD1DC /* jtracer */,
-				28B1740C1FE8E69A003AD1DC /* jtracerTests */,
-				28B173F71FE8E699003AD1DC /* Products */,
-				28B1741B1FE8EF0B003AD1DC /* Frameworks */,
+				287BF7F41FEA38BC001BB98A /* Metal.framework */,
+				287BF7F31FEA38BC001BB98A /* MetalKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28B174201FEA381C003AD1DC = {
+			isa = PBXGroup;
+			children = (
+				28B1742B1FEA381C003AD1DC /* jtracer */,
+				28B174421FEA381D003AD1DC /* jtracerTests */,
+				28B1742A1FEA381C003AD1DC /* Products */,
+				287BF7F21FEA38BB001BB98A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		28B173F71FE8E699003AD1DC /* Products */ = {
+		28B1742A1FEA381C003AD1DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				28B173F61FE8E699003AD1DC /* jtracer.app */,
-				28B174091FE8E69A003AD1DC /* jtracerTests.xctest */,
+				28B174291FEA381C003AD1DC /* jtracer.app */,
+				28B1743F1FEA381D003AD1DC /* jtracerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		28B173F81FE8E699003AD1DC /* jtracer */ = {
+		28B1742B1FEA381C003AD1DC /* jtracer */ = {
 			isa = PBXGroup;
 			children = (
-				28B173F91FE8E699003AD1DC /* AppDelegate.h */,
-				28B173FA1FE8E699003AD1DC /* AppDelegate.m */,
-				28B173FC1FE8E699003AD1DC /* Assets.xcassets */,
-				28B174011FE8E699003AD1DC /* Info.plist */,
-				28B174021FE8E69A003AD1DC /* main.m */,
-				28B174041FE8E69A003AD1DC /* jtracer.entitlements */,
+				28B1742C1FEA381C003AD1DC /* AppDelegate.h */,
+				28B1742D1FEA381C003AD1DC /* AppDelegate.m */,
+				28B1742F1FEA381C003AD1DC /* ViewController.h */,
+				28B174301FEA381C003AD1DC /* ViewController.m */,
+				28B174321FEA381C003AD1DC /* Assets.xcassets */,
+				28B174341FEA381C003AD1DC /* Main.storyboard */,
+				28B174371FEA381D003AD1DC /* Info.plist */,
+				28B174381FEA381D003AD1DC /* main.m */,
+				28B1743A1FEA381D003AD1DC /* jtracer.entitlements */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";
 		};
-		28B1740C1FE8E69A003AD1DC /* jtracerTests */ = {
+		28B174421FEA381D003AD1DC /* jtracerTests */ = {
 			isa = PBXGroup;
 			children = (
-				28B1740D1FE8E69A003AD1DC /* jtracerTests.m */,
-				28B1740F1FE8E69A003AD1DC /* Info.plist */,
+				28B174431FEA381D003AD1DC /* jtracerTests.m */,
+				28B174451FEA381D003AD1DC /* Info.plist */,
 			);
 			path = jtracerTests;
-			sourceTree = "<group>";
-		};
-		28B1741B1FE8EF0B003AD1DC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				28B1741E1FE8EF26003AD1DC /* Metal.framework */,
-				28B1741C1FE8EF0B003AD1DC /* MetalKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		28B173F51FE8E699003AD1DC /* jtracer */ = {
+		28B174281FEA381C003AD1DC /* jtracer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28B174121FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracer" */;
+			buildConfigurationList = 28B174481FEA381D003AD1DC /* Build configuration list for PBXNativeTarget "jtracer" */;
 			buildPhases = (
-				28B173F21FE8E699003AD1DC /* Sources */,
-				28B173F31FE8E699003AD1DC /* Frameworks */,
-				28B173F41FE8E699003AD1DC /* Resources */,
+				28B174251FEA381C003AD1DC /* Sources */,
+				28B174261FEA381C003AD1DC /* Frameworks */,
+				28B174271FEA381C003AD1DC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -127,48 +135,48 @@
 			);
 			name = jtracer;
 			productName = jtracer;
-			productReference = 28B173F61FE8E699003AD1DC /* jtracer.app */;
+			productReference = 28B174291FEA381C003AD1DC /* jtracer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		28B174081FE8E69A003AD1DC /* jtracerTests */ = {
+		28B1743E1FEA381D003AD1DC /* jtracerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28B174151FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracerTests" */;
+			buildConfigurationList = 28B1744B1FEA381D003AD1DC /* Build configuration list for PBXNativeTarget "jtracerTests" */;
 			buildPhases = (
-				28B174051FE8E69A003AD1DC /* Sources */,
-				28B174061FE8E69A003AD1DC /* Frameworks */,
-				28B174071FE8E69A003AD1DC /* Resources */,
+				28B1743B1FEA381D003AD1DC /* Sources */,
+				28B1743C1FEA381D003AD1DC /* Frameworks */,
+				28B1743D1FEA381D003AD1DC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				28B1740B1FE8E69A003AD1DC /* PBXTargetDependency */,
+				28B174411FEA381D003AD1DC /* PBXTargetDependency */,
 			);
 			name = jtracerTests;
 			productName = jtracerTests;
-			productReference = 28B174091FE8E69A003AD1DC /* jtracerTests.xctest */;
+			productReference = 28B1743F1FEA381D003AD1DC /* jtracerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		28B173EE1FE8E699003AD1DC /* Project object */ = {
+		28B174211FEA381C003AD1DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = jonathonracz;
 				TargetAttributes = {
-					28B173F51FE8E699003AD1DC = {
+					28B174281FEA381C003AD1DC = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
-					28B174081FE8E69A003AD1DC = {
+					28B1743E1FEA381D003AD1DC = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 28B173F51FE8E699003AD1DC;
+						TestTargetID = 28B174281FEA381C003AD1DC;
 					};
 				};
 			};
-			buildConfigurationList = 28B173F11FE8E699003AD1DC /* Build configuration list for PBXProject "jtracer" */;
+			buildConfigurationList = 28B174241FEA381C003AD1DC /* Build configuration list for PBXProject "jtracer" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -176,27 +184,28 @@
 				en,
 				Base,
 			);
-			mainGroup = 28B173ED1FE8E699003AD1DC;
-			productRefGroup = 28B173F71FE8E699003AD1DC /* Products */;
+			mainGroup = 28B174201FEA381C003AD1DC;
+			productRefGroup = 28B1742A1FEA381C003AD1DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				28B173F51FE8E699003AD1DC /* jtracer */,
-				28B174081FE8E69A003AD1DC /* jtracerTests */,
+				28B174281FEA381C003AD1DC /* jtracer */,
+				28B1743E1FEA381D003AD1DC /* jtracerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		28B173F41FE8E699003AD1DC /* Resources */ = {
+		28B174271FEA381C003AD1DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B173FD1FE8E699003AD1DC /* Assets.xcassets in Resources */,
+				28B174331FEA381C003AD1DC /* Assets.xcassets in Resources */,
+				28B174361FEA381C003AD1DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28B174071FE8E69A003AD1DC /* Resources */ = {
+		28B1743D1FEA381D003AD1DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,35 +215,47 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		28B173F21FE8E699003AD1DC /* Sources */ = {
+		28B174251FEA381C003AD1DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B174031FE8E69A003AD1DC /* main.m in Sources */,
-				28B173FB1FE8E699003AD1DC /* AppDelegate.m in Sources */,
+				28B174311FEA381C003AD1DC /* ViewController.m in Sources */,
+				28B174391FEA381D003AD1DC /* main.m in Sources */,
+				28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28B174051FE8E69A003AD1DC /* Sources */ = {
+		28B1743B1FEA381D003AD1DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B1740E1FE8E69A003AD1DC /* jtracerTests.m in Sources */,
+				28B174441FEA381D003AD1DC /* jtracerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		28B1740B1FE8E69A003AD1DC /* PBXTargetDependency */ = {
+		28B174411FEA381D003AD1DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 28B173F51FE8E699003AD1DC /* jtracer */;
-			targetProxy = 28B1740A1FE8E69A003AD1DC /* PBXContainerItemProxy */;
+			target = 28B174281FEA381C003AD1DC /* jtracer */;
+			targetProxy = 28B174401FEA381D003AD1DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		28B174341FEA381C003AD1DC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28B174351FEA381C003AD1DC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		28B174101FE8E69A003AD1DC /* Debug */ = {
+		28B174461FEA381D003AD1DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -289,7 +310,7 @@
 			};
 			name = Debug;
 		};
-		28B174111FE8E69A003AD1DC /* Release */ = {
+		28B174471FEA381D003AD1DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -337,7 +358,7 @@
 			};
 			name = Release;
 		};
-		28B174131FE8E69A003AD1DC /* Debug */ = {
+		28B174491FEA381D003AD1DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -352,7 +373,7 @@
 			};
 			name = Debug;
 		};
-		28B174141FE8E69A003AD1DC /* Release */ = {
+		28B1744A1FEA381D003AD1DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -367,7 +388,7 @@
 			};
 			name = Release;
 		};
-		28B174161FE8E69A003AD1DC /* Debug */ = {
+		28B1744C1FEA381D003AD1DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -382,7 +403,7 @@
 			};
 			name = Debug;
 		};
-		28B174171FE8E69A003AD1DC /* Release */ = {
+		28B1744D1FEA381D003AD1DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -400,34 +421,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28B173F11FE8E699003AD1DC /* Build configuration list for PBXProject "jtracer" */ = {
+		28B174241FEA381C003AD1DC /* Build configuration list for PBXProject "jtracer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28B174101FE8E69A003AD1DC /* Debug */,
-				28B174111FE8E69A003AD1DC /* Release */,
+				28B174461FEA381D003AD1DC /* Debug */,
+				28B174471FEA381D003AD1DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		28B174121FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracer" */ = {
+		28B174481FEA381D003AD1DC /* Build configuration list for PBXNativeTarget "jtracer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28B174131FE8E69A003AD1DC /* Debug */,
-				28B174141FE8E69A003AD1DC /* Release */,
+				28B174491FEA381D003AD1DC /* Debug */,
+				28B1744A1FEA381D003AD1DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		28B174151FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracerTests" */ = {
+		28B1744B1FEA381D003AD1DC /* Build configuration list for PBXNativeTarget "jtracerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28B174161FE8E69A003AD1DC /* Debug */,
-				28B174171FE8E69A003AD1DC /* Release */,
+				28B1744C1FEA381D003AD1DC /* Debug */,
+				28B1744D1FEA381D003AD1DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 28B173EE1FE8E699003AD1DC /* Project object */;
+	rootObject = 28B174211FEA381C003AD1DC /* Project object */;
 }
