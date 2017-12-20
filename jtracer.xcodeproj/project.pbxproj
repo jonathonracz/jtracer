@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28B173FB1FE8E699003AD1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B173FA1FE8E699003AD1DC /* AppDelegate.m */; };
+		28B173FD1FE8E699003AD1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B173FC1FE8E699003AD1DC /* Assets.xcassets */; };
+		28B174031FE8E69A003AD1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174021FE8E69A003AD1DC /* main.m */; };
+		28B1740E1FE8E69A003AD1DC /* jtracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1740D1FE8E69A003AD1DC /* jtracerTests.m */; };
+		28B1741D1FE8EF0B003AD1DC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1741C1FE8EF0B003AD1DC /* MetalKit.framework */; };
+		28B1741F1FE8EF26003AD1DC /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1741E1FE8EF26003AD1DC /* Metal.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28B1740A1FE8E69A003AD1DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28B173EE1FE8E699003AD1DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28B173F51FE8E699003AD1DC;
+			remoteInfo = jtracer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28B173F61FE8E699003AD1DC /* jtracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B173F91FE8E699003AD1DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		28B173FA1FE8E699003AD1DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		28B173FC1FE8E699003AD1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28B174011FE8E699003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28B174021FE8E69A003AD1DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28B174041FE8E69A003AD1DC /* jtracer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jtracer.entitlements; sourceTree = "<group>"; };
+		28B174091FE8E69A003AD1DC /* jtracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jtracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B1740D1FE8E69A003AD1DC /* jtracerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jtracerTests.m; sourceTree = "<group>"; };
+		28B1740F1FE8E69A003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28B1741C1FE8EF0B003AD1DC /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		28B1741E1FE8EF26003AD1DC /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28B173F31FE8E699003AD1DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B1741F1FE8EF26003AD1DC /* Metal.framework in Frameworks */,
+				28B1741D1FE8EF0B003AD1DC /* MetalKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B174061FE8E69A003AD1DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28B173ED1FE8E699003AD1DC = {
+			isa = PBXGroup;
+			children = (
+				28B173F81FE8E699003AD1DC /* jtracer */,
+				28B1740C1FE8E69A003AD1DC /* jtracerTests */,
+				28B173F71FE8E699003AD1DC /* Products */,
+				28B1741B1FE8EF0B003AD1DC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		28B173F71FE8E699003AD1DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28B173F61FE8E699003AD1DC /* jtracer.app */,
+				28B174091FE8E69A003AD1DC /* jtracerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28B173F81FE8E699003AD1DC /* jtracer */ = {
+			isa = PBXGroup;
+			children = (
+				28B173F91FE8E699003AD1DC /* AppDelegate.h */,
+				28B173FA1FE8E699003AD1DC /* AppDelegate.m */,
+				28B173FC1FE8E699003AD1DC /* Assets.xcassets */,
+				28B174011FE8E699003AD1DC /* Info.plist */,
+				28B174021FE8E69A003AD1DC /* main.m */,
+				28B174041FE8E69A003AD1DC /* jtracer.entitlements */,
+			);
+			path = jtracer;
+			sourceTree = "<group>";
+		};
+		28B1740C1FE8E69A003AD1DC /* jtracerTests */ = {
+			isa = PBXGroup;
+			children = (
+				28B1740D1FE8E69A003AD1DC /* jtracerTests.m */,
+				28B1740F1FE8E69A003AD1DC /* Info.plist */,
+			);
+			path = jtracerTests;
+			sourceTree = "<group>";
+		};
+		28B1741B1FE8EF0B003AD1DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28B1741E1FE8EF26003AD1DC /* Metal.framework */,
+				28B1741C1FE8EF0B003AD1DC /* MetalKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28B173F51FE8E699003AD1DC /* jtracer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28B174121FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracer" */;
+			buildPhases = (
+				28B173F21FE8E699003AD1DC /* Sources */,
+				28B173F31FE8E699003AD1DC /* Frameworks */,
+				28B173F41FE8E699003AD1DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jtracer;
+			productName = jtracer;
+			productReference = 28B173F61FE8E699003AD1DC /* jtracer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28B174081FE8E69A003AD1DC /* jtracerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28B174151FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracerTests" */;
+			buildPhases = (
+				28B174051FE8E69A003AD1DC /* Sources */,
+				28B174061FE8E69A003AD1DC /* Frameworks */,
+				28B174071FE8E69A003AD1DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28B1740B1FE8E69A003AD1DC /* PBXTargetDependency */,
+			);
+			name = jtracerTests;
+			productName = jtracerTests;
+			productReference = 28B174091FE8E69A003AD1DC /* jtracerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28B173EE1FE8E699003AD1DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = jonathonracz;
+				TargetAttributes = {
+					28B173F51FE8E699003AD1DC = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					28B174081FE8E69A003AD1DC = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 28B173F51FE8E699003AD1DC;
+					};
+				};
+			};
+			buildConfigurationList = 28B173F11FE8E699003AD1DC /* Build configuration list for PBXProject "jtracer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28B173ED1FE8E699003AD1DC;
+			productRefGroup = 28B173F71FE8E699003AD1DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28B173F51FE8E699003AD1DC /* jtracer */,
+				28B174081FE8E69A003AD1DC /* jtracerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28B173F41FE8E699003AD1DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B173FD1FE8E699003AD1DC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B174071FE8E69A003AD1DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28B173F21FE8E699003AD1DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B174031FE8E69A003AD1DC /* main.m in Sources */,
+				28B173FB1FE8E699003AD1DC /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B174051FE8E69A003AD1DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B1740E1FE8E69A003AD1DC /* jtracerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28B1740B1FE8E69A003AD1DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28B173F51FE8E699003AD1DC /* jtracer */;
+			targetProxy = 28B1740A1FE8E69A003AD1DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		28B174101FE8E69A003AD1DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		28B174111FE8E69A003AD1DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		28B174131FE8E69A003AD1DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = jtracer/jtracer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2AWBX59SU4;
+				INFOPLIST_FILE = jtracer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jonathonracz.jtracer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		28B174141FE8E69A003AD1DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = jtracer/jtracer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2AWBX59SU4;
+				INFOPLIST_FILE = jtracer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jonathonracz.jtracer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		28B174161FE8E69A003AD1DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2AWBX59SU4;
+				INFOPLIST_FILE = jtracerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jonathonracz.jtracerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/jtracer.app/Contents/MacOS/jtracer";
+			};
+			name = Debug;
+		};
+		28B174171FE8E69A003AD1DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2AWBX59SU4;
+				INFOPLIST_FILE = jtracerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jonathonracz.jtracerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/jtracer.app/Contents/MacOS/jtracer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28B173F11FE8E699003AD1DC /* Build configuration list for PBXProject "jtracer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28B174101FE8E69A003AD1DC /* Debug */,
+				28B174111FE8E69A003AD1DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28B174121FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28B174131FE8E69A003AD1DC /* Debug */,
+				28B174141FE8E69A003AD1DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28B174151FE8E69A003AD1DC /* Build configuration list for PBXNativeTarget "jtracerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28B174161FE8E69A003AD1DC /* Debug */,
+				28B174171FE8E69A003AD1DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28B173EE1FE8E699003AD1DC /* Project object */;
+}
