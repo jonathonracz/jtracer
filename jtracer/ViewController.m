@@ -7,11 +7,9 @@
 //
 
 #import "ViewController.h"
-#import <MetalKit/MetalKit.h>
+#import <Metal/Metal.h>
 
 @interface ViewController ()
-
-@property (weak) IBOutlet MTKView *viewport;
 
 @end
 
@@ -19,8 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self.viewport initWithFrame:self.view.frame device:MTLCreateSystemDefaultDevice()];
 }
 
 
