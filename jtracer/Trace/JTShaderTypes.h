@@ -8,6 +8,13 @@
 
 #pragma once
 
-enum JTTextureIndex {
-    output
-};
+#include "JTTypes.h"
+
+namespace jt
+{
+    struct Uniforms
+    {
+        uint32 frameCount;
+        uint32 random;
+    };
+}

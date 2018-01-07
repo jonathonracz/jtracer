@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2834A6981FFD382800267954 /* JTMetalView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2834A6971FFD382800267954 /* JTMetalView.mm */; };
 		2834A69C1FFD3B1B00267954 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2834A69B1FFD3B1B00267954 /* QuartzCore.framework */; };
-		2834A69E1FFD54BC00267954 /* JTMain.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2834A69D1FFD54BC00267954 /* JTMain.metal */; };
+		2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2834A69D1FFD54BC00267954 /* JTMetal.metal */; };
 		287BF7F61FEA38BC001BB98A /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287BF7F41FEA38BC001BB98A /* Metal.framework */; };
 		28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1742D1FEA381C003AD1DC /* AppDelegate.m */; };
 		28B174311FEA381C003AD1DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174301FEA381C003AD1DC /* ViewController.m */; };
@@ -17,6 +17,7 @@
 		28B174361FEA381C003AD1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B174341FEA381C003AD1DC /* Main.storyboard */; };
 		28B174391FEA381D003AD1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174381FEA381D003AD1DC /* main.m */; };
 		28B174441FEA381D003AD1DC /* jtracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174431FEA381D003AD1DC /* jtracerTests.m */; };
+		28C648811FFF1E3D00454706 /* Random.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28C648801FFF1E3D00454706 /* Random.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,10 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2823DD252000070E00BE7F9A /* JTBindPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBindPoints.h; sourceTree = "<group>"; };
 		2834A6961FFD382800267954 /* JTMetalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTMetalView.h; sourceTree = "<group>"; };
 		2834A6971FFD382800267954 /* JTMetalView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTMetalView.mm; sourceTree = "<group>"; };
 		2834A69B1FFD3B1B00267954 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		2834A69D1FFD54BC00267954 /* JTMain.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = JTMain.metal; sourceTree = "<group>"; };
+		2834A69D1FFD54BC00267954 /* JTMetal.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = JTMetal.metal; sourceTree = "<group>"; };
 		2834A69F1FFD57EF00267954 /* JTShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTShaderTypes.h; sourceTree = "<group>"; };
 		287BF7F41FEA38BC001BB98A /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		28B174291FEA381C003AD1DC /* jtracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +51,9 @@
 		28B1743F1FEA381D003AD1DC /* jtracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jtracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B174431FEA381D003AD1DC /* jtracerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jtracerTests.m; sourceTree = "<group>"; };
 		28B174451FEA381D003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28C6487F1FFF1A8100454706 /* JTNumerics.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = JTNumerics.h; sourceTree = "<group>"; };
+		28C648801FFF1E3D00454706 /* Random.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Random.mm; sourceTree = "<group>"; };
+		28C648821FFF247700454706 /* JTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +107,7 @@
 		28B1742B1FEA381C003AD1DC /* jtracer */ = {
 			isa = PBXGroup;
 			children = (
+				28C6487E1FFF19B900454706 /* Trace */,
 				28B1742C1FEA381C003AD1DC /* AppDelegate.h */,
 				28B1742D1FEA381C003AD1DC /* AppDelegate.m */,
 				28B1742F1FEA381C003AD1DC /* ViewController.h */,
@@ -113,8 +119,7 @@
 				28B1743A1FEA381D003AD1DC /* jtracer.entitlements */,
 				2834A6961FFD382800267954 /* JTMetalView.h */,
 				2834A6971FFD382800267954 /* JTMetalView.mm */,
-				2834A69D1FFD54BC00267954 /* JTMain.metal */,
-				2834A69F1FFD57EF00267954 /* JTShaderTypes.h */,
+				2834A69D1FFD54BC00267954 /* JTMetal.metal */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";
@@ -124,8 +129,20 @@
 			children = (
 				28B174431FEA381D003AD1DC /* jtracerTests.m */,
 				28B174451FEA381D003AD1DC /* Info.plist */,
+				28C648801FFF1E3D00454706 /* Random.mm */,
 			);
 			path = jtracerTests;
+			sourceTree = "<group>";
+		};
+		28C6487E1FFF19B900454706 /* Trace */ = {
+			isa = PBXGroup;
+			children = (
+				2823DD252000070E00BE7F9A /* JTBindPoints.h */,
+				2834A69F1FFD57EF00267954 /* JTShaderTypes.h */,
+				28C6487F1FFF1A8100454706 /* JTNumerics.h */,
+				28C648821FFF247700454706 /* JTTypes.h */,
+			);
+			path = Trace;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +248,7 @@
 			files = (
 				2834A6981FFD382800267954 /* JTMetalView.mm in Sources */,
 				28B174311FEA381C003AD1DC /* ViewController.m in Sources */,
-				2834A69E1FFD54BC00267954 /* JTMain.metal in Sources */,
+				2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */,
 				28B174391FEA381D003AD1DC /* main.m in Sources */,
 				28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */,
 			);
@@ -241,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C648811FFF1E3D00454706 /* Random.mm in Sources */,
 				28B174441FEA381D003AD1DC /* jtracerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #include "JTShaderTypes.h"
+#include "JTBindPoints.h"
 
 @interface JTMetalView () {
     __weak CAMetalLayer *_metalLayer;
@@ -19,7 +20,7 @@
     id<MTLCommandQueue> _commandQueue;
     id<MTLComputePipelineState> _pipelineState;
     BOOL _needsFramebufferResize;
-    size_t _frameCount;
+    jt::Uniforms _uniforms;
 
 #ifdef TARGET_OS_MAC
     CVDisplayLinkRef _displayLink;
@@ -48,7 +49,7 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if (self) {
-        _frameCount = 0;
+        _uniforms.frameCount = 0;
 
         _device = MTLCreateSystemDefaultDevice();
 
@@ -63,7 +64,7 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
         _metalLayer.framebufferOnly = NO;
 
         id<MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
-        id<MTLFunction> jtKernel = [defaultLibrary newFunctionWithName:@"jtMain"];
+        id<MTLFunction> jtKernel = [defaultLibrary newFunctionWithName:@"jtMetal"];
 
         NSError *error = nil;
         _pipelineState = [_device newComputePipelineStateWithFunction:jtKernel error:&error];
@@ -98,7 +99,8 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
 
 - (void)render {
     @autoreleasepool {
-        _frameCount++;
+        _uniforms.frameCount++;
+        _uniforms.random = arc4random();
 
         if (_needsFramebufferResize) {
             CGSize newFramebufferSize = self.bounds.size;
@@ -125,7 +127,8 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
         id<MTLCommandBuffer> commandBuffer = _commandQueue.commandBuffer;
         id<MTLComputeCommandEncoder> commandEncoder = [commandBuffer computeCommandEncoder];
         [commandEncoder setComputePipelineState:_pipelineState];
-        [commandEncoder setTexture:texture atIndex:JTTextureIndex::output];
+        [commandEncoder setBytes:&_uniforms length:sizeof(jt::Uniforms) atIndex:jt::BufferIndex::uniforms];
+        [commandEncoder setTexture:texture atIndex:jt::TextureIndex::output];
 
         MTLSize threadsPerThreadGroup = MTLSizeMake(_pipelineState.threadExecutionWidth, _pipelineState.maxTotalThreadsPerThreadgroup / _pipelineState.threadExecutionWidth, 1);
         MTLSize threadsPerGrid = MTLSizeMake(texture.width, texture.height, 1);
