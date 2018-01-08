@@ -25,8 +25,7 @@ kernel void jtMetal(texture2d<half, access::write> output [[texture(jt::TextureI
     if((gid.x >= output.get_width()) || (gid.y >= output.get_height()))
         return;
 
-    //OpenSimplex osimp(uniforms.frameCount);
-    //float pixelValue = osimp.noise2(gid.x, gid.y);
+    float value = OpenSimplex::Noise::noise2(uniforms.context, gid.x, gid.y);
 
-    output.write(half4(1.0f, 0.0f, 0.0f, 1.0f), gid);
+    output.write(half4(value, value, value, 1.0f), gid);
 }

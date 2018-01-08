@@ -11,6 +11,7 @@
 #import <Metal/Metal.h>
 #import <QuartzCore/QuartzCore.h>
 
+#include "OpenSimplex/OpenSimplex.h"
 #include "JTShaderTypes.h"
 #include "JTBindPoints.h"
 
@@ -99,7 +100,7 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
 
 - (void)render {
     @autoreleasepool {
-        _uniforms.frameCount++;
+        OpenSimplex::Seed::computeContextForSeed(_uniforms.context, _uniforms.frameCount);
         _uniforms.random = arc4random();
 
         if (_needsFramebufferResize) {
@@ -138,6 +139,8 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
 
         [commandBuffer presentDrawable:drawable];
         [commandBuffer commit];
+
+        _uniforms.frameCount++;
     }
 }
 
