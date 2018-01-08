@@ -1,0 +1,3 @@
+[submodule "jtracer/External/OpenSimplexCPP"]
+	path = jtracer/External/OpenSimplexCPP
+	url = https://jonathonracz@github.com/jonathonracz/OpenSimplexCPP.git
