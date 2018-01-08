@@ -13,11 +13,6 @@
     #define JT_THREADGROUP threadgroup
     #define JT_CONSTANT constant
     #define JT_THREAD thread
-#elif OPENCL_COMPILER
-    #define JT_DEVICE global
-    #define JT_THREADGROUP local
-    #define JT_CONSTANT constant
-    #define JT_THREAD private
 #else
     #define JT_DEVICE
     #define JT_THREADGROUP
@@ -44,8 +39,6 @@ namespace jt
 
     template <class T, size_t N>
     using array = metal::array<T, N>;
-#elif OPENCL_COMPILER
-
 #else
     using int8 = std::int8_t;
     using int16 = std::int16_t;

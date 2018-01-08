@@ -9,11 +9,13 @@
 #pragma once
 
 #include "JTTypes.h"
+#include "OpenSimplex/OpenSimplex.h"
 
 namespace jt
 {
     struct Uniforms
     {
+        OpenSimplex::Context context;
         uint32 frameCount;
         uint32 random;
     };
