@@ -24,6 +24,7 @@
 
 namespace jt
 {
+
 // Define fixed width integer types - because the world still hasn't agreed on
 // how to name them or which ones to define.
 #ifdef __AIR64__
@@ -53,4 +54,5 @@ namespace jt
     template <class T, size_t N>
     using array = std::array<T, N>;
 #endif
+
 }

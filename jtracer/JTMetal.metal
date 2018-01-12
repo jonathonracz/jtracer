@@ -23,8 +23,8 @@ kernel void jtMetal(texture2d<half, access::write> output [[texture(jt::TextureI
     if((gid.x >= output.get_width()) || (gid.y >= output.get_height()))
         return;
 
-    jt::PRNG random(gid, uniforms);
-    float value = OpenSimplex::Noise::noise2(uniforms.context, gid.x, gid.y);
+    float randomSeed = OpenSimplex::Noise::noise2(uniforms.context, gid.x, gid.y);
+    jt::PRNG random(randomSeed);
 
-    output.write(half4(value, value, value, 1.0f), gid);
+    output.write(half4(random.nextNormalized(), random.nextNormalized(), random.nextNormalized(), 1.0f), gid);
 }

@@ -18,6 +18,7 @@
 		28B174391FEA381D003AD1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174381FEA381D003AD1DC /* main.m */; };
 		28B174441FEA381D003AD1DC /* jtracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174431FEA381D003AD1DC /* jtracerTests.m */; };
 		28C648811FFF1E3D00454706 /* Random.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28C648801FFF1E3D00454706 /* Random.mm */; };
+		28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E0F20082FB0003D055E /* JTDisplayLink.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,9 @@
 		28C6487F1FFF1A8100454706 /* JTNumerics.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = JTNumerics.h; sourceTree = "<group>"; };
 		28C648801FFF1E3D00454706 /* Random.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Random.mm; sourceTree = "<group>"; };
 		28C648821FFF247700454706 /* JTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTTypes.h; sourceTree = "<group>"; };
+		28D27E0D200829AF003D055E /* JTBRDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBRDF.h; sourceTree = "<group>"; };
+		28D27E0E20082FB0003D055E /* JTDisplayLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTDisplayLink.h; sourceTree = "<group>"; };
+		28D27E0F20082FB0003D055E /* JTDisplayLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTDisplayLink.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				2834A6961FFD382800267954 /* JTMetalView.h */,
 				2834A6971FFD382800267954 /* JTMetalView.mm */,
 				2834A69D1FFD54BC00267954 /* JTMetal.metal */,
+				28D27E0E20082FB0003D055E /* JTDisplayLink.h */,
+				28D27E0F20082FB0003D055E /* JTDisplayLink.m */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 				2834A69F1FFD57EF00267954 /* JTShaderTypes.h */,
 				28C6487F1FFF1A8100454706 /* JTNumerics.h */,
 				28C648821FFF247700454706 /* JTTypes.h */,
+				28D27E0D200829AF003D055E /* JTBRDF.h */,
 			);
 			path = Trace;
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 				2834A6981FFD382800267954 /* JTMetalView.mm in Sources */,
 				28B174311FEA381C003AD1DC /* ViewController.m in Sources */,
 				2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */,
+				28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */,
 				28B174391FEA381D003AD1DC /* main.m in Sources */,
 				28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */,
 			);

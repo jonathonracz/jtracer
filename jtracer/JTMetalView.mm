@@ -7,6 +7,7 @@
 //
 
 #import "JTMetalView.h"
+#import "JTDisplayLink.h"
 
 #import <Metal/Metal.h>
 #import <QuartzCore/QuartzCore.h>
@@ -23,36 +24,19 @@
     BOOL _needsFramebufferResize;
     jt::Uniforms _uniforms;
 
-#ifdef TARGET_OS_MAC
-    CVDisplayLinkRef _displayLink;
-    dispatch_source_t _displaySource;
-#endif
+    JTDisplayLink *_displayLink;
 }
 
 @end
 
 @implementation JTMetalView
 
-#ifdef TARGET_OS_MAC
-static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
-                                    const CVTimeStamp *now,
-                                    const CVTimeStamp *outputTime,
-                                    CVOptionFlags flagsIn,
-                                    CVOptionFlags *flagsOut,
-                                    void *displayLinkContext)
-{
-    __weak dispatch_source_t source = (__bridge dispatch_source_t)displayLinkContext;
-    dispatch_source_merge_data(source, 1);
-    return kCVReturnSuccess;
-}
-#endif
-
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if (self) {
         _uniforms.frameCount = 0;
-
         _device = MTLCreateSystemDefaultDevice();
+        _displayLink = [JTDisplayLink displayLinkWithTarget:self selector:@selector(render:)];
 
 #ifdef TARGET_OS_MAC
         self.layer = [CAMetalLayer new];
@@ -75,30 +59,12 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
         }
 
         _commandQueue = [_device newCommandQueue];
-
-        // Setup our refresh via a displaylink.
-#ifdef TARGET_OS_MAC
-        _displaySource = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
-        __block JTMetalView *weakSelf = self;
-        dispatch_source_set_event_handler(_displaySource, ^{
-            [weakSelf render];
-        });
-        dispatch_resume(_displaySource);
-
-        CVReturn cvRet;
-        cvRet = CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
-        assert(cvRet == kCVReturnSuccess);
-        cvRet = CVDisplayLinkSetOutputCallback(_displayLink, &dispatchRefreshLoop, (__bridge void *)_displaySource);
-        assert(cvRet == kCVReturnSuccess);
-
-        CVDisplayLinkStart(_displayLink);
-#endif
     }
 
     return self;
 }
 
-- (void)render {
+- (void)render:(JTDisplayLink *)sender {
     @autoreleasepool {
         OpenSimplex::Seed::computeContextForSeed(_uniforms.context, _uniforms.frameCount);
         _uniforms.random = arc4random();
@@ -109,9 +75,7 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
 #ifdef TARGET_OS_MAC
             NSScreen *screen = self.window.screen ?: [NSScreen mainScreen];
 
-            CVReturn cvRet;
-            cvRet = CVDisplayLinkSetCurrentCGDisplay(_displayLink, (CGDirectDisplayID)((NSNumber *)screen.deviceDescription[@"NSScreenNumber"]).intValue);
-            assert(cvRet == kCVReturnSuccess);
+            [_displayLink setScreen:screen];
 
             newFramebufferSize.width *= screen.backingScaleFactor;
             newFramebufferSize.height *= screen.backingScaleFactor;

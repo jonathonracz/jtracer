@@ -716,6 +716,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="metalView" destination="ORD-pA-lOq" id="sAG-zP-QJV"/>
                         <outlet property="view" destination="m2S-Jp-Qdl" id="YgH-JP-Hsu"/>
                     </connections>
                 </viewController>

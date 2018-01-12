@@ -13,10 +13,12 @@
 
 namespace jt
 {
-    struct Uniforms
-    {
-        OpenSimplex::Context context;
-        uint32 frameCount;
-        uint32 random;
-    };
+
+struct Uniforms
+{
+    OpenSimplex::Context context;
+    uint32 frameCount;
+    uint32 random;
+};
+
 }

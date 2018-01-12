@@ -6,8 +6,8 @@
 //  Copyright © 2018 jonathonracz. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#include <Cocoa/Cocoa.h>
 
-@interface JTMetalView : NSView <CALayerDelegate>
+@interface JTMetalView : NSView
 
 @end

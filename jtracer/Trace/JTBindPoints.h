@@ -10,13 +10,15 @@
 
 namespace jt
 {
-    enum TextureIndex
-    {
-        output
-    };
 
-    enum BufferIndex
-    {
-        uniforms
-    };
+enum TextureIndex
+{
+    output
+};
+
+enum BufferIndex
+{
+    uniforms
+};
+
 }

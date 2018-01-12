@@ -7,9 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <Metal/Metal.h>
+#import "JTDisplayLink.h"
+#import "JTMetalView.h"
 
 @interface ViewController ()
+
+@property (weak) IBOutlet JTMetalView *metalView;
 
 @end
 
