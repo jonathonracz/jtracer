@@ -12,13 +12,14 @@
 		2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2834A69D1FFD54BC00267954 /* JTMetal.metal */; };
 		287BF7F61FEA38BC001BB98A /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287BF7F41FEA38BC001BB98A /* Metal.framework */; };
 		28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1742D1FEA381C003AD1DC /* AppDelegate.m */; };
-		28B174311FEA381C003AD1DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174301FEA381C003AD1DC /* ViewController.m */; };
+		28B174311FEA381C003AD1DC /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28B174301FEA381C003AD1DC /* ViewController.mm */; };
 		28B174331FEA381C003AD1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B174321FEA381C003AD1DC /* Assets.xcassets */; };
 		28B174361FEA381C003AD1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B174341FEA381C003AD1DC /* Main.storyboard */; };
 		28B174391FEA381D003AD1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174381FEA381D003AD1DC /* main.m */; };
 		28B174441FEA381D003AD1DC /* jtracerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B174431FEA381D003AD1DC /* jtracerTests.m */; };
 		28C648811FFF1E3D00454706 /* Random.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28C648801FFF1E3D00454706 /* Random.mm */; };
 		28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E0F20082FB0003D055E /* JTDisplayLink.m */; };
+		28D27E1620092F6E003D055E /* JTRenderState.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E1520092F6E003D055E /* JTRenderState.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,7 @@
 		28B1742C1FEA381C003AD1DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28B1742D1FEA381C003AD1DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		28B1742F1FEA381C003AD1DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		28B174301FEA381C003AD1DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		28B174301FEA381C003AD1DC /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		28B174321FEA381C003AD1DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28B174351FEA381C003AD1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28B174371FEA381D003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +59,8 @@
 		28D27E0D200829AF003D055E /* JTBRDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBRDF.h; sourceTree = "<group>"; };
 		28D27E0E20082FB0003D055E /* JTDisplayLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTDisplayLink.h; sourceTree = "<group>"; };
 		28D27E0F20082FB0003D055E /* JTDisplayLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTDisplayLink.m; sourceTree = "<group>"; };
+		28D27E1420092F6E003D055E /* JTRenderState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTRenderState.h; sourceTree = "<group>"; };
+		28D27E1520092F6E003D055E /* JTRenderState.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTRenderState.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +118,7 @@
 				28B1742C1FEA381C003AD1DC /* AppDelegate.h */,
 				28B1742D1FEA381C003AD1DC /* AppDelegate.m */,
 				28B1742F1FEA381C003AD1DC /* ViewController.h */,
-				28B174301FEA381C003AD1DC /* ViewController.m */,
+				28B174301FEA381C003AD1DC /* ViewController.mm */,
 				28B174321FEA381C003AD1DC /* Assets.xcassets */,
 				28B174341FEA381C003AD1DC /* Main.storyboard */,
 				28B174371FEA381D003AD1DC /* Info.plist */,
@@ -126,6 +129,8 @@
 				2834A69D1FFD54BC00267954 /* JTMetal.metal */,
 				28D27E0E20082FB0003D055E /* JTDisplayLink.h */,
 				28D27E0F20082FB0003D055E /* JTDisplayLink.m */,
+				28D27E1420092F6E003D055E /* JTRenderState.h */,
+				28D27E1520092F6E003D055E /* JTRenderState.mm */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";
@@ -254,10 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2834A6981FFD382800267954 /* JTMetalView.mm in Sources */,
-				28B174311FEA381C003AD1DC /* ViewController.m in Sources */,
+				28B174311FEA381C003AD1DC /* ViewController.mm in Sources */,
 				2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */,
 				28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */,
 				28B174391FEA381D003AD1DC /* main.m in Sources */,
+				28D27E1620092F6E003D055E /* JTRenderState.mm in Sources */,
 				28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

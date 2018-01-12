@@ -17,7 +17,7 @@ namespace jt
 struct Uniforms
 {
     OpenSimplex::Context context;
-    uint32 frameCount;
+    uint32 frameCount = 0;
     uint32 random;
 };
 

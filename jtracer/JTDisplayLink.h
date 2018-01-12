@@ -15,7 +15,7 @@
 @property (nonatomic) CGDirectDisplayID displayID;
 #endif
 
-@property (nonatomic) float deltaSeconds;
+@property (readonly, nonatomic) CFTimeInterval timestamp;
 
 + (JTDisplayLink *)displayLinkWithTarget:(id)target selector:(SEL)sel;
 

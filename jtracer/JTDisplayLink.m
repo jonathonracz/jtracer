@@ -19,6 +19,8 @@
 
 @implementation JTDisplayLink
 
+@synthesize timestamp = _timestamp;
+
 #ifdef TARGET_OS_MAC
 - (void)setScreen:(NSScreen *)screen {
     [self setDisplayID:(CGDirectDisplayID)((NSNumber *)screen.deviceDescription[@"NSScreenNumber"]).intValue];
@@ -57,6 +59,7 @@ static CVReturn dispatchRefreshLoop(CVDisplayLinkRef displayLink,
         _displaySource = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
         __block JTDisplayLink *weakSelf = self;
         dispatch_source_set_event_handler(_displaySource, ^{
+            _timestamp = (CFTimeInterval)CVDisplayLinkGetActualOutputVideoRefreshPeriod(_displayLink);
             IMP imp = [target methodForSelector:sel];
             void (*func)(id, SEL, JTDisplayLink *) = (void *)imp;
             func(target, sel, weakSelf);

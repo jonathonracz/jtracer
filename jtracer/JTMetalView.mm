@@ -7,12 +7,10 @@
 //
 
 #import "JTMetalView.h"
-#import "JTDisplayLink.h"
 
 #import <Metal/Metal.h>
 #import <QuartzCore/QuartzCore.h>
 
-#include "OpenSimplex/OpenSimplex.h"
 #include "JTShaderTypes.h"
 #include "JTBindPoints.h"
 
@@ -22,9 +20,6 @@
     id<MTLCommandQueue> _commandQueue;
     id<MTLComputePipelineState> _pipelineState;
     BOOL _needsFramebufferResize;
-    jt::Uniforms _uniforms;
-
-    JTDisplayLink *_displayLink;
 }
 
 @end
@@ -34,9 +29,7 @@
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if (self) {
-        _uniforms.frameCount = 0;
         _device = MTLCreateSystemDefaultDevice();
-        _displayLink = [JTDisplayLink displayLinkWithTarget:self selector:@selector(render:)];
 
 #ifdef TARGET_OS_MAC
         self.layer = [CAMetalLayer new];
@@ -64,18 +57,15 @@
     return self;
 }
 
-- (void)render:(JTDisplayLink *)sender {
+- (void)render:(JTRenderState *)state sender:(JTDisplayLink *)sender {
     @autoreleasepool {
-        OpenSimplex::Seed::computeContextForSeed(_uniforms.context, _uniforms.frameCount);
-        _uniforms.random = arc4random();
-
         if (_needsFramebufferResize) {
             CGSize newFramebufferSize = self.bounds.size;
 
 #ifdef TARGET_OS_MAC
             NSScreen *screen = self.window.screen ?: [NSScreen mainScreen];
 
-            [_displayLink setScreen:screen];
+            [sender setScreen:screen];
 
             newFramebufferSize.width *= screen.backingScaleFactor;
             newFramebufferSize.height *= screen.backingScaleFactor;
@@ -92,7 +82,7 @@
         id<MTLCommandBuffer> commandBuffer = _commandQueue.commandBuffer;
         id<MTLComputeCommandEncoder> commandEncoder = [commandBuffer computeCommandEncoder];
         [commandEncoder setComputePipelineState:_pipelineState];
-        [commandEncoder setBytes:&_uniforms length:sizeof(jt::Uniforms) atIndex:jt::BufferIndex::uniforms];
+        [commandEncoder setBytes:state.uniforms length:sizeof(jt::Uniforms) atIndex:jt::BufferIndex::uniforms];
         [commandEncoder setTexture:texture atIndex:jt::TextureIndex::output];
 
         MTLSize threadsPerThreadGroup = MTLSizeMake(_pipelineState.threadExecutionWidth, _pipelineState.maxTotalThreadsPerThreadgroup / _pipelineState.threadExecutionWidth, 1);
@@ -103,8 +93,6 @@
 
         [commandBuffer presentDrawable:drawable];
         [commandBuffer commit];
-
-        _uniforms.frameCount++;
     }
 }
 

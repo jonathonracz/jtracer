@@ -6,8 +6,12 @@
 //  Copyright © 2018 jonathonracz. All rights reserved.
 //
 
-#include <Cocoa/Cocoa.h>
+#import <Cocoa/Cocoa.h>
+#import "JTRenderState.h"
+#import "JTDisplayLink.h"
 
 @interface JTMetalView : NSView
+
+- (void)render:(JTRenderState *)state sender:(JTDisplayLink *)sender;
 
 @end
