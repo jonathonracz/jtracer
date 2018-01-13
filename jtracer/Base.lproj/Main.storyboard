@@ -709,7 +709,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORD-pA-lOq" customClass="JTMetalView">
+                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORD-pA-lOq" customClass="JTRenderer">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </customView>
@@ -717,6 +717,7 @@
                     </view>
                     <connections>
                         <outlet property="metalView" destination="ORD-pA-lOq" id="sAG-zP-QJV"/>
+                        <outlet property="renderer" destination="ORD-pA-lOq" id="FNe-ZG-0fw"/>
                         <outlet property="view" destination="m2S-Jp-Qdl" id="YgH-JP-Hsu"/>
                     </connections>
                 </viewController>

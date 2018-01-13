@@ -8,15 +8,16 @@
 
 #import "ViewController.h"
 #import "JTDisplayLink.h"
-#import "JTMetalView.h"
+#import "JTMetalRender.h"
 #import "JTRenderState.h"
 
 @interface ViewController () {
     JTRenderState *_renderState;
     JTDisplayLink *_displayLink;
+    JTMetalRender *_metalView;
 }
 
-@property (weak) IBOutlet JTMetalView *metalView;
+@property (weak) IBOutlet JTRenderer *renderer;
 
 @end
 
@@ -27,11 +28,14 @@
 
     _renderState = [JTRenderState new];
     _displayLink = [JTDisplayLink displayLinkWithTarget:self selector:@selector(renderViews:)];
+    _metalView = [JTMetalRender new];
+
+    self.renderer.delegate = _metalView;
 }
 
 - (void)renderViews:(JTDisplayLink *)sender {
     [_renderState update:_displayLink.timestamp];
-    [_metalView render:_renderState sender:_displayLink];
+    [self.renderer render:_renderState sender:_displayLink];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

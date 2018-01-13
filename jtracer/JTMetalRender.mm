@@ -1,12 +1,12 @@
 //
-//  JTMetalView.m
+//  JTMetalRender.m
 //  jtracer
 //
 //  Created by Jonathon Racz on 1/3/18.
 //  Copyright © 2018 jonathonracz. All rights reserved.
 //
 
-#import "JTMetalView.h"
+#import "JTMetalRender.h"
 
 #import <Metal/Metal.h>
 #import <QuartzCore/QuartzCore.h>
@@ -14,28 +14,22 @@
 #include "JTShaderTypes.h"
 #include "JTBindPoints.h"
 
-@interface JTMetalView () {
-    __weak CAMetalLayer *_metalLayer;
+@interface JTMetalRender () {
+    CAMetalLayer *_metalLayer;
     id<MTLDevice> _device;
     id<MTLCommandQueue> _commandQueue;
     id<MTLComputePipelineState> _pipelineState;
-    BOOL _needsFramebufferResize;
 }
 
 @end
 
-@implementation JTMetalView
+@implementation JTMetalRender
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
+- (id)init {
+    self = [super init];
     if (self) {
         _device = MTLCreateSystemDefaultDevice();
-
-#ifdef TARGET_OS_MAC
-        self.layer = [CAMetalLayer new];
-        self.wantsLayer = YES;
-        _metalLayer = (CAMetalLayer *)self.layer;
-#endif
+        _metalLayer = [CAMetalLayer new];
 
         _metalLayer.device = _device;
         _metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
@@ -57,27 +51,18 @@
     return self;
 }
 
-- (void)render:(JTRenderState *)state sender:(JTDisplayLink *)sender {
+- (CALayer *)backingLayer {
+    return _metalLayer;
+}
+
+- (void)render:(JTRenderer *)renderer state:(JTRenderState *)state sender:(JTDisplayLink *)sender {
     @autoreleasepool {
-        if (_needsFramebufferResize) {
-            CGSize newFramebufferSize = self.bounds.size;
-
-#ifdef TARGET_OS_MAC
-            NSScreen *screen = self.window.screen ?: [NSScreen mainScreen];
-
-            [sender setScreen:screen];
-
-            newFramebufferSize.width *= screen.backingScaleFactor;
-            newFramebufferSize.height *= screen.backingScaleFactor;
-#endif
-
-            _metalLayer.drawableSize = newFramebufferSize;
-            _needsFramebufferResize = NO;
+        if (renderer.frameBufferResized) {
+            _metalLayer.drawableSize = renderer.frameBufferSize;
         }
 
         id<CAMetalDrawable> drawable = [_metalLayer nextDrawable];
         id<MTLTexture> texture = drawable.texture;
-        NSLog(@"drawable w: %lu h: %lu", texture.width, texture.height);
 
         id<MTLCommandBuffer> commandBuffer = _commandQueue.commandBuffer;
         id<MTLComputeCommandEncoder> commandEncoder = [commandBuffer computeCommandEncoder];
@@ -95,21 +80,5 @@
         [commandBuffer commit];
     }
 }
-
-#ifdef TARGET_OS_MAC
-- (void)setFrameSize:(NSSize)newSize {
-    [super setFrameSize:newSize];
-    _needsFramebufferResize = YES;
-}
-
-- (void)setBoundsSize:(NSSize)newSize {
-    [super setBoundsSize:newSize];
-    _needsFramebufferResize = YES;
-}
-- (void)viewDidChangeBackingProperties {
-    [super viewDidChangeBackingProperties];
-    _needsFramebufferResize = YES;
-}
-#endif
 
 @end

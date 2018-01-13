@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2834A6981FFD382800267954 /* JTMetalView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2834A6971FFD382800267954 /* JTMetalView.mm */; };
+		2834A6981FFD382800267954 /* JTMetalRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2834A6971FFD382800267954 /* JTMetalRender.mm */; };
 		2834A69C1FFD3B1B00267954 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2834A69B1FFD3B1B00267954 /* QuartzCore.framework */; };
 		2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2834A69D1FFD54BC00267954 /* JTMetal.metal */; };
 		287BF7F61FEA38BC001BB98A /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287BF7F41FEA38BC001BB98A /* Metal.framework */; };
@@ -20,6 +20,7 @@
 		28C648811FFF1E3D00454706 /* Random.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28C648801FFF1E3D00454706 /* Random.mm */; };
 		28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E0F20082FB0003D055E /* JTDisplayLink.m */; };
 		28D27E1620092F6E003D055E /* JTRenderState.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E1520092F6E003D055E /* JTRenderState.mm */; };
+		28D27E1920095ACD003D055E /* JTRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E1820095ACD003D055E /* JTRenderer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +35,8 @@
 
 /* Begin PBXFileReference section */
 		2823DD252000070E00BE7F9A /* JTBindPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBindPoints.h; sourceTree = "<group>"; };
-		2834A6961FFD382800267954 /* JTMetalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTMetalView.h; sourceTree = "<group>"; };
-		2834A6971FFD382800267954 /* JTMetalView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTMetalView.mm; sourceTree = "<group>"; };
+		2834A6961FFD382800267954 /* JTMetalRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTMetalRender.h; sourceTree = "<group>"; };
+		2834A6971FFD382800267954 /* JTMetalRender.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTMetalRender.mm; sourceTree = "<group>"; };
 		2834A69B1FFD3B1B00267954 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2834A69D1FFD54BC00267954 /* JTMetal.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = JTMetal.metal; sourceTree = "<group>"; };
 		2834A69F1FFD57EF00267954 /* JTShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTShaderTypes.h; sourceTree = "<group>"; };
@@ -61,6 +62,8 @@
 		28D27E0F20082FB0003D055E /* JTDisplayLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTDisplayLink.m; sourceTree = "<group>"; };
 		28D27E1420092F6E003D055E /* JTRenderState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTRenderState.h; sourceTree = "<group>"; };
 		28D27E1520092F6E003D055E /* JTRenderState.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTRenderState.mm; sourceTree = "<group>"; };
+		28D27E1720095ACD003D055E /* JTRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTRenderer.h; sourceTree = "<group>"; };
+		28D27E1820095ACD003D055E /* JTRenderer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTRenderer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,13 +127,15 @@
 				28B174371FEA381D003AD1DC /* Info.plist */,
 				28B174381FEA381D003AD1DC /* main.m */,
 				28B1743A1FEA381D003AD1DC /* jtracer.entitlements */,
-				2834A6961FFD382800267954 /* JTMetalView.h */,
-				2834A6971FFD382800267954 /* JTMetalView.mm */,
+				2834A6961FFD382800267954 /* JTMetalRender.h */,
+				2834A6971FFD382800267954 /* JTMetalRender.mm */,
 				2834A69D1FFD54BC00267954 /* JTMetal.metal */,
 				28D27E0E20082FB0003D055E /* JTDisplayLink.h */,
 				28D27E0F20082FB0003D055E /* JTDisplayLink.m */,
 				28D27E1420092F6E003D055E /* JTRenderState.h */,
 				28D27E1520092F6E003D055E /* JTRenderState.mm */,
+				28D27E1720095ACD003D055E /* JTRenderer.h */,
+				28D27E1820095ACD003D055E /* JTRenderer.mm */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";
@@ -258,10 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2834A6981FFD382800267954 /* JTMetalView.mm in Sources */,
+				2834A6981FFD382800267954 /* JTMetalRender.mm in Sources */,
 				28B174311FEA381C003AD1DC /* ViewController.mm in Sources */,
 				2834A69E1FFD54BC00267954 /* JTMetal.metal in Sources */,
 				28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */,
+				28D27E1920095ACD003D055E /* JTRenderer.mm in Sources */,
 				28B174391FEA381D003AD1DC /* main.m in Sources */,
 				28D27E1620092F6E003D055E /* JTRenderState.mm in Sources */,
 				28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */,
