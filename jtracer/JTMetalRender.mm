@@ -36,7 +36,7 @@
         _metalLayer.framebufferOnly = NO;
 
         id<MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
-        id<MTLFunction> jtKernel = [defaultLibrary newFunctionWithName:@"jtMetal"];
+        id<MTLFunction> jtKernel = [defaultLibrary newFunctionWithName:@"metalRender"];
 
         NSError *error = nil;
         _pipelineState = [_device newComputePipelineStateWithFunction:jtKernel error:&error];
