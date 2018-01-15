@@ -14,7 +14,9 @@
 #include <vector>
 
 @interface JTCGRender () <CALayerDelegate> {
-    CGContextRef _context;
+    std::vector<float> _frameBufferData;
+    CGDataProviderRef _frameBufferDataProvider;
+    CGImageRef _frameBuffer;
     CALayer *_backingLayer;
 }
 
@@ -40,25 +42,24 @@
 - (void)render:(JTRenderer *)renderer state:(JTRenderState *)state sender:(JTDisplayLink *)sender {
     size_t width = renderer.frameBufferSize.width;
     size_t height = renderer.frameBufferSize.height;
-    size_t bitsPerComponent = sizeof(float) * 8;
-    size_t bitsPerPixel = bitsPerComponent * 4;
-    size_t bytesPerRow = (bitsPerPixel / 8) * width;
+    size_t numComponents = 4;
+    size_t bytesPerComponent = sizeof(float);
+    size_t bitsPerComponent = bytesPerComponent * 8;
+    size_t bytesPerPixel = bytesPerComponent * numComponents;
+    size_t bitsPerPixel = bytesPerPixel * 8;
+    size_t bytesPerRow = bytesPerPixel * width;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast | kCGBitmapFloatComponents | kCGBitmapByteOrder32Host;
 
-    if (renderer.frameBufferResized) {
-        if (_context)
-            CGContextRelease(_context);
+    if (renderer.frameBufferResized || !_frameBuffer) {
+        if (_frameBufferDataProvider)
+            CGDataProviderRelease(_frameBufferDataProvider);
 
-        _context = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
-
-        CGFloat red[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
-        CGContextSetFillColorSpace(_context, colorSpace);
-        CGContextSetFillColor(_context, red);
-        CGContextFillRect(_context, CGRectMake(0, 0, width, height));
+        _frameBufferData = std::vector<float>(width * height * numComponents);
+        _frameBufferDataProvider = CGDataProviderCreateWithData(NULL, _frameBufferData.data(), _frameBufferData.size(), NULL);
     }
 
-    simd::packed::float4 *pixelData = (simd::packed::float4 *)CGBitmapContextGetData(_context);
+    simd::packed::float4 *pixelData = (simd::packed::float4 *)_frameBufferData.data();
     for (size_t y = 0; y < height; ++y) {
         for (size_t x = 0; x < width; ++x) {
             simd::uint2 pos;
@@ -73,15 +74,18 @@
         }
     }
 
+    if (_frameBuffer) {
+        CGImageRelease(_frameBuffer);
+    }
+
+    _frameBuffer = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpace, bitmapInfo, _frameBufferDataProvider, NULL, NO, kCGRenderingIntentDefault);
+
     CGColorSpaceRelease(colorSpace);
     [_backingLayer setNeedsDisplay];
 }
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-    assert(layer == _backingLayer);
-    CGImageRef currentContext = CGBitmapContextCreateImage(_context);
-    CGContextDrawImage(ctx, layer.bounds, currentContext);
-    CGImageRelease(currentContext);
+    CGContextDrawImage(ctx, layer.bounds, _frameBuffer);
 }
 
 @end

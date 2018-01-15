@@ -36,9 +36,7 @@
 
 #ifdef TARGET_OS_MAC
         NSScreen *screen = self.window.screen ?: [NSScreen mainScreen];
-
         [sender setScreen:screen];
-
         newFramebufferSize.width *= screen.backingScaleFactor;
         newFramebufferSize.height *= screen.backingScaleFactor;
         self.layer.contentsScale = screen.backingScaleFactor;
