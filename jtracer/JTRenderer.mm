@@ -41,6 +41,7 @@
 
         newFramebufferSize.width *= screen.backingScaleFactor;
         newFramebufferSize.height *= screen.backingScaleFactor;
+        self.layer.contentsScale = screen.backingScaleFactor;
 #endif
 
         _frameBufferSize = newFramebufferSize;

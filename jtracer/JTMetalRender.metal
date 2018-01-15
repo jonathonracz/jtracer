@@ -13,6 +13,8 @@ using namespace metal;
 #include "Trace/JTBindPoints.h"
 #include "Trace/JTNumerics.h"
 
+#include "Trace/JTTrace.h"
+
 #include "OpenSimplex/OpenSimplex.h"
 
 kernel void metalRender(texture2d<half, access::write> output [[texture(jt::TextureIndex::output)]],
@@ -23,8 +25,10 @@ kernel void metalRender(texture2d<half, access::write> output [[texture(jt::Text
     if((gid.x >= output.get_width()) || (gid.y >= output.get_height()))
         return;
 
-    float randomSeed = OpenSimplex::Noise::noise2(uniforms.context, gid.x, gid.y);
-    jt::PRNG random(randomSeed);
-
-    output.write(half4(random.nextNormalized(), random.nextNormalized(), random.nextNormalized(), 1.0f), gid);
+    jt::Trace trace;
+    simd::uint2 texDims;
+    texDims.x = output.get_width();
+    texDims.y = output.get_height();
+    simd::float4 value = trace.runTrace(uniforms, gid, texDims);
+    output.write(simd::half4(value), gid);
 }

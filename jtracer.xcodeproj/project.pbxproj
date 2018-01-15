@@ -21,6 +21,7 @@
 		28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E0F20082FB0003D055E /* JTDisplayLink.m */; };
 		28D27E1620092F6E003D055E /* JTRenderState.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E1520092F6E003D055E /* JTRenderState.mm */; };
 		28D27E1920095ACD003D055E /* JTRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E1820095ACD003D055E /* JTRenderer.mm */; };
+		28D27E1C200A7079003D055E /* JTCGRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D27E1B200A7079003D055E /* JTCGRender.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,9 @@
 		28D27E1520092F6E003D055E /* JTRenderState.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTRenderState.mm; sourceTree = "<group>"; };
 		28D27E1720095ACD003D055E /* JTRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTRenderer.h; sourceTree = "<group>"; };
 		28D27E1820095ACD003D055E /* JTRenderer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTRenderer.mm; sourceTree = "<group>"; };
+		28D27E1A200A7079003D055E /* JTCGRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTCGRender.h; sourceTree = "<group>"; };
+		28D27E1B200A7079003D055E /* JTCGRender.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTCGRender.mm; sourceTree = "<group>"; };
+		28D27E1D200AD081003D055E /* JTTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTTrace.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,22 +124,24 @@
 				28C6487E1FFF19B900454706 /* Trace */,
 				28B1742C1FEA381C003AD1DC /* AppDelegate.h */,
 				28B1742D1FEA381C003AD1DC /* AppDelegate.m */,
-				28B1742F1FEA381C003AD1DC /* ViewController.h */,
-				28B174301FEA381C003AD1DC /* ViewController.mm */,
 				28B174321FEA381C003AD1DC /* Assets.xcassets */,
-				28B174341FEA381C003AD1DC /* Main.storyboard */,
 				28B174371FEA381D003AD1DC /* Info.plist */,
-				28B174381FEA381D003AD1DC /* main.m */,
-				28B1743A1FEA381D003AD1DC /* jtracer.entitlements */,
-				2834A6961FFD382800267954 /* JTMetalRender.h */,
-				2834A6971FFD382800267954 /* JTMetalRender.mm */,
-				2834A69D1FFD54BC00267954 /* JTMetalRender.metal */,
+				28D27E1A200A7079003D055E /* JTCGRender.h */,
+				28D27E1B200A7079003D055E /* JTCGRender.mm */,
 				28D27E0E20082FB0003D055E /* JTDisplayLink.h */,
 				28D27E0F20082FB0003D055E /* JTDisplayLink.m */,
-				28D27E1420092F6E003D055E /* JTRenderState.h */,
-				28D27E1520092F6E003D055E /* JTRenderState.mm */,
+				2834A6961FFD382800267954 /* JTMetalRender.h */,
+				2834A69D1FFD54BC00267954 /* JTMetalRender.metal */,
+				2834A6971FFD382800267954 /* JTMetalRender.mm */,
+				28B1743A1FEA381D003AD1DC /* jtracer.entitlements */,
 				28D27E1720095ACD003D055E /* JTRenderer.h */,
 				28D27E1820095ACD003D055E /* JTRenderer.mm */,
+				28D27E1420092F6E003D055E /* JTRenderState.h */,
+				28D27E1520092F6E003D055E /* JTRenderState.mm */,
+				28B174381FEA381D003AD1DC /* main.m */,
+				28B174341FEA381C003AD1DC /* Main.storyboard */,
+				28B1742F1FEA381C003AD1DC /* ViewController.h */,
+				28B174301FEA381C003AD1DC /* ViewController.mm */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";
@@ -158,6 +164,7 @@
 				28C6487F1FFF1A8100454706 /* JTNumerics.h */,
 				28C648821FFF247700454706 /* JTTypes.h */,
 				28D27E0D200829AF003D055E /* JTBRDF.h */,
+				28D27E1D200AD081003D055E /* JTTrace.h */,
 			);
 			path = Trace;
 			sourceTree = "<group>";
@@ -269,6 +276,7 @@
 				28D27E1020082FB0003D055E /* JTDisplayLink.m in Sources */,
 				28D27E1920095ACD003D055E /* JTRenderer.mm in Sources */,
 				28B174391FEA381D003AD1DC /* main.m in Sources */,
+				28D27E1C200A7079003D055E /* JTCGRender.mm in Sources */,
 				28D27E1620092F6E003D055E /* JTRenderState.mm in Sources */,
 				28B1742E1FEA381C003AD1DC /* AppDelegate.m in Sources */,
 			);
