@@ -12,13 +12,13 @@
 namespace jt
 {
 
-// Based on the disney microfacet model.
+// Based on the Disney microfacet model.
 class BRDF
 {
 public:
     static float calcBRDF(simd::vec3 light, simd::vec3 view, simd::vec3 normal)
     {
-        simd::vec3 half = (light + view) /
+        //simd::vec3 half = (light + view) /
     }
 
 private:
