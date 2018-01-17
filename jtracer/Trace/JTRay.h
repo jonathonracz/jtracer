@@ -8,9 +8,6 @@
 
 #pragma once
 
-#include <simd/simd.h>
-using namespace simd;
-
 #include "JTTypes.h"
 
 namespace jt
@@ -27,7 +24,7 @@ public:
     float3 origin() const { return a; }
     float3 direction() const { return b; }
     float3 pointAtParam(float t) const { return a + (b * t); }
-    float3 directionWithZeroOrigin() const { return b - a; }
+    float3 directionAtOrigin() const { return b - a; }
 
     void moveToOrigin() { b -= a; a = make_float3(0.0f, 0.0f, 0.0f); }
     void normalize() { b = simd::normalize(b - a) + a; }

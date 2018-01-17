@@ -8,11 +8,10 @@
 
 #pragma once
 
-#include <simd/simd.h>
-using namespace simd;
-
+#include "JTTypes.h"
 #include "JTShaderTypes.h"
 #include "JTRay.h"
+#include "JTSphere.h"
 
 namespace jt
 {
@@ -34,11 +33,28 @@ public:
         float3 horizontalSpan = make_float3(4.0f, 0.0f, 0.0f);
         float3 verticalSpan = make_float3(0.0f, 2.0f, 0.0f);
         float3 origin = make_float3(0.0f, 0.0f, 0.0f);
-
         Ray mainRay(origin, lowerLeftCorner + (u * horizontalSpan) + (v * verticalSpan));
 
-        float4 ret;
-        return ret;
+        // Create a sphere world.
+        SphereList world(uniforms.spheres, sizeof(uniforms.spheres) / sizeof(uniforms.spheres[0]));
+
+        // Perform a single path trace with a fallback to drawing the background
+        // gradient.
+        Sphere::HitRecord hitRecord;
+        float3 color;
+        if (world.hitTest(mainRay, hitRecord))
+        {
+            color = 0.5f * (hitRecord.normal + 1);
+        }
+        else
+        {
+            // Draw background gradient.
+            float3 unitDirection = normalize(mainRay.directionAtOrigin());
+            float normalizedY = (unitDirection.y + 1.0f) / 2.0f;
+            color = ((1.0f - normalizedY) * make_float3(1.0f, 1.0f, 1.0f)) + (normalizedY * make_float3(0.5f, 0.7f, 1.0f));
+        }
+
+        return make_float4(color, 1.0f);
     }
 };
 

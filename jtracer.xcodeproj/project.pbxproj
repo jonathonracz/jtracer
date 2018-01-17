@@ -36,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		2823DD252000070E00BE7F9A /* JTBindPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBindPoints.h; sourceTree = "<group>"; };
+		282B906C200E7DD800889ED9 /* JTSphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTSphere.h; sourceTree = "<group>"; };
+		282B906D200EBC9400889ED9 /* JTSphereList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTSphereList.h; sourceTree = "<group>"; };
 		2834A6961FFD382800267954 /* JTMetalRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTMetalRender.h; sourceTree = "<group>"; };
 		2834A6971FFD382800267954 /* JTMetalRender.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTMetalRender.mm; sourceTree = "<group>"; };
 		2834A69B1FFD3B1B00267954 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -167,6 +169,8 @@
 				28D27E0D200829AF003D055E /* JTBRDF.h */,
 				28D27E1D200AD081003D055E /* JTTrace.h */,
 				28D27E1E200D6974003D055E /* JTRay.h */,
+				282B906C200E7DD800889ED9 /* JTSphere.h */,
+				282B906D200EBC9400889ED9 /* JTSphereList.h */,
 			);
 			path = Trace;
 			sourceTree = "<group>";
