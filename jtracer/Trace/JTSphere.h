@@ -38,7 +38,7 @@ public:
         float discriminant = (b * b) - (a * c);
         if (discriminant > 0)
         {
-            float root1 = (-b - sqrt((b * b) - (4 * a * c))) / (2 * a);
+            float root1 = (-b - sqrt(discriminant)) / a;
             if (root1 < tMax && root1 > tMin)
             {
                 record.t = root1;
@@ -47,7 +47,7 @@ public:
                 return true;
             }
 
-            float root2 = (-b + sqrt((b * b) - (4 * a * c))) / (2 * a);
+            float root2 = (-b + sqrt(discriminant)) / a;
             if (root2 < tMax && root2 > tMin)
             {
                 record.t = root2;
