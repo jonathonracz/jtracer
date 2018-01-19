@@ -12,12 +12,60 @@
 #include "JTTrace.h"
 #include <simd/simd.h>
 #include <vector>
+#include <cstdint>
+
+class DoubleBuffer
+{
+public:
+    struct Buffer
+    {
+        Buffer(size_t width, size_t height, size_t bitsPerComponent,
+               size_t bitsPerPixel, size_t bytesPerRow,
+               CGColorSpaceRef _Nullable colorSpace, CGBitmapInfo bitmapInfo)
+        {
+            if (colorSpace)
+                CGColorSpaceRetain(colorSpace);
+            else
+                colorSpace = CGColorSpaceCreateDeviceRGB();
+
+            data = std::vector<std::uint8_t>(bytesPerRow * height);
+            provider = CGDataProviderCreateWithData(NULL, data.data(), data.size(), NULL);
+            image = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel,
+                                  bytesPerRow, colorSpace, bitmapInfo, provider,
+                                  NULL, NO, kCGRenderingIntentDefault);
+
+            CGColorSpaceRelease(colorSpace);
+        }
+
+        ~Buffer()
+        {
+            CGImageRelease(image);
+            CGDataProviderRelease(provider);
+        }
+
+        std::vector<std::uint8_t> data;
+        CGDataProviderRef provider;
+        CGImageRef image;
+        std::mutex lock;
+    };
+
+    void swap()
+    {
+        const std::lock_guard<std::mutex> lock(swapLock);
+        std::swap(buffers[0], buffers[1]);
+    }
+
+private:
+    std::mutex swapLock;
+    std::array<std::unique_ptr<Buffer>, 2> buffers;
+};
 
 @interface JTCGRender () <CALayerDelegate> {
     std::vector<float> _frameBufferData;
     CGDataProviderRef _frameBufferDataProvider;
     CGImageRef _frameBuffer;
     CALayer *_backingLayer;
+    CFTimeInterval _lastRenderTime;
 }
 
 @end
@@ -37,6 +85,10 @@
 
 - (CALayer *)backingLayer {
     return _backingLayer;
+}
+
+- (CFTimeInterval)lastRenderTime {
+    return _lastRenderTime;
 }
 
 - (void)render:(JTRenderer *)renderer state:(JTRenderState *)state sender:(JTDisplayLink *)sender {
@@ -64,6 +116,7 @@
     dimensions.x = (unsigned int)width;
     dimensions.y = (unsigned int)height;
 
+    NSDate* startTime = [NSDate new];
     // TODO: This is embarassingly parallel.
     for (size_t i = 0; i < pixelsToProcess; ++i) {
         size_t x = i % width;
@@ -73,6 +126,7 @@
         pos.y = dimensions.y - (unsigned int)y; // Flip vertically to make bottom left (0,0)
         ((packed::float4 *)_frameBufferData.data())[i] = jt::Trace::runTrace(*state.uniforms, pos, dimensions);
     }
+    _lastRenderTime = [startTime timeIntervalSinceNow];
 
     if (_frameBuffer) {
         CGImageRelease(_frameBuffer);

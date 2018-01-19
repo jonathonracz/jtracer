@@ -19,6 +19,7 @@
     id<MTLDevice> _device;
     id<MTLCommandQueue> _commandQueue;
     id<MTLComputePipelineState> _pipelineState;
+    CFTimeInterval _renderTime;
 }
 
 @end
@@ -30,6 +31,7 @@
     if (self) {
         _device = MTLCreateSystemDefaultDevice();
         _metalLayer = [CAMetalLayer new];
+        _renderTime = INFINITY;
 
         _metalLayer.device = _device;
         _metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
@@ -55,6 +57,10 @@
     return _metalLayer;
 }
 
+- (CFTimeInterval)lastRenderTime {
+    return _renderTime;
+}
+
 - (void)render:(JTRenderer *)renderer state:(JTRenderState *)state sender:(JTDisplayLink *)sender {
     @autoreleasepool {
         if (renderer.frameBufferResized) {
@@ -77,6 +83,11 @@
         [commandEncoder endEncoding];
 
         [commandBuffer presentDrawable:drawable];
+
+        __block NSDate* renderStartTime = [NSDate new];
+        [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> _Nonnull buffer) {
+            _renderTime = [renderStartTime timeIntervalSinceNow];
+        }];
         [commandBuffer commit];
     }
 }

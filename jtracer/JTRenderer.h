@@ -18,6 +18,7 @@
 @required
 - (CALayer *)backingLayer;
 - (void)render:(JTRenderer *)renderer state:(JTRenderState *)state sender:(JTDisplayLink *)sender;
+- (CFTimeInterval)lastRenderTime;
 
 @end
 
