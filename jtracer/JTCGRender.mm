@@ -59,19 +59,19 @@
         _frameBufferDataProvider = CGDataProviderCreateWithData(NULL, _frameBufferData.data(), _frameBufferData.size(), NULL);
     }
 
-    packed::float4 *pixelData = (packed::float4 *)_frameBufferData.data();
-    for (size_t y = 0; y < height; ++y) {
-        for (size_t x = 0; x < width; ++x) {
-            uint2 dimensions;
-            dimensions.x = (unsigned int)width;
-            dimensions.y = (unsigned int)height;
-            uint2 pos;
-            pos.x = (unsigned int)x;
-            pos.y = dimensions.y - (unsigned int)y; // Flip vertically to make bottom left (0,0)
-            jt::Trace trace;
-            *pixelData = trace.runTrace(*state.uniforms, pos, dimensions);
-            pixelData++;
-        }
+    size_t pixelsToProcess = width * height;
+    uint2 dimensions;
+    dimensions.x = (unsigned int)width;
+    dimensions.y = (unsigned int)height;
+
+    // TODO: This is embarassingly parallel.
+    for (size_t i = 0; i < pixelsToProcess; ++i) {
+        size_t x = i % width;
+        size_t y = (i - x) / width;
+        uint2 pos;
+        pos.x = (unsigned int)x;
+        pos.y = dimensions.y - (unsigned int)y; // Flip vertically to make bottom left (0,0)
+        ((packed::float4 *)_frameBufferData.data())[i] = jt::Trace::runTrace(*state.uniforms, pos, dimensions);
     }
 
     if (_frameBuffer) {

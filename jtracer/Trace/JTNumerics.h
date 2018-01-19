@@ -18,16 +18,9 @@ namespace jt
 class PRNG
 {
 public:
-    explicit PRNG(uint64 seed[2])
-    {
-        state[0] ^= seed[0];
-        state[1] ^= seed[1];
-    }
-
     explicit PRNG(float seed)
     {
-        state[0] ^= static_cast<uint64>(seed * 0xffffffffffffffffULL);
-        state[1] ^= static_cast<uint64>(seed * 0xffffffffffffffffULL);
+        state[0] = static_cast<uint64>(seed);
     }
 
     ~PRNG() = default;
@@ -49,7 +42,7 @@ public:
     }
 
 private:
-    uint64 state[2] = { 0xb5d3a12c54b8eb9c, 0x8a4462672a6bdba7 };
+    uint64 state[2];
 };
 
 };

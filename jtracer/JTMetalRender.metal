@@ -25,12 +25,11 @@ kernel void metalRender(texture2d<half, access::write> output [[texture(jt::Text
     if((gid.x >= output.get_width()) || (gid.y >= output.get_height()))
         return;
 
-    jt::Trace trace;
     uint2 texDims;
     texDims.x = output.get_width();
     texDims.y = output.get_height();
     uint2 pixelCoordFlippedY = gid; // Move (0, 0) from upper left to lower left
     pixelCoordFlippedY.y = texDims.y - pixelCoordFlippedY.y;
-    float4 value = trace.runTrace(uniforms, pixelCoordFlippedY, texDims);
+    float4 value = jt::Trace::runTrace(uniforms, pixelCoordFlippedY, texDims);
     output.write(half4(value), gid);
 }

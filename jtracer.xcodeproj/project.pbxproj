@@ -36,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		2823DD252000070E00BE7F9A /* JTBindPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBindPoints.h; sourceTree = "<group>"; };
+		28287E8920107071001901D4 /* JTCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTCamera.h; sourceTree = "<group>"; };
 		282B906C200E7DD800889ED9 /* JTSphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTSphere.h; sourceTree = "<group>"; };
 		282B906D200EBC9400889ED9 /* JTSphereList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTSphereList.h; sourceTree = "<group>"; };
 		2834A6961FFD382800267954 /* JTMetalRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTMetalRender.h; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		2834A69D1FFD54BC00267954 /* JTMetalRender.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = JTMetalRender.metal; sourceTree = "<group>"; };
 		2834A69F1FFD57EF00267954 /* JTShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTShaderTypes.h; sourceTree = "<group>"; };
 		287BF7F41FEA38BC001BB98A /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		2886ED3D2011544F0044FF3F /* JTBackgroundGradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBackgroundGradient.h; sourceTree = "<group>"; };
 		28B174291FEA381C003AD1DC /* jtracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B1742C1FEA381C003AD1DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28B1742D1FEA381C003AD1DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,6 +173,8 @@
 				28D27E1E200D6974003D055E /* JTRay.h */,
 				282B906C200E7DD800889ED9 /* JTSphere.h */,
 				282B906D200EBC9400889ED9 /* JTSphereList.h */,
+				28287E8920107071001901D4 /* JTCamera.h */,
+				2886ED3D2011544F0044FF3F /* JTBackgroundGradient.h */,
 			);
 			path = Trace;
 			sourceTree = "<group>";

@@ -705,7 +705,7 @@
         <!--Window Controller-->
         <scene sceneID="SYc-U1-mkU">
             <objects>
-                <windowController id="ue7-bo-aif" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="ue7-bo-aif" sceneMemberID="viewController">
                     <window key="window" title="Controls" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="dJg-S0-nU3" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

@@ -20,6 +20,7 @@
     #define JT_THREAD
     #include <cstdint>
     #include <array>
+    #include <iostream>
 #endif
 
 #include <simd/simd.h>
@@ -47,6 +48,8 @@ namespace jt
 // Define fixed width integer types - because the world still hasn't agreed on
 // how to name them or which ones to define.
 #ifdef __METAL_VERSION__
+    #define JT_DBG(x)
+
     using int8 = int8_t;
     using int16 = int16_t;
     using int32 = int32_t;
@@ -60,6 +63,8 @@ namespace jt
     template <class T, size_t N>
     using array = metal::array<T, N>;
 #else
+    #define JT_DBG(x) std::cout << x << std::endl;
+
     using int8 = std::int8_t;
     using int16 = std::int16_t;
     using int32 = std::int32_t;
