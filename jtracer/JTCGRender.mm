@@ -51,9 +51,12 @@ public:
 };
 
 @interface JTCGRender () <CALayerDelegate> {
-    std::shared_ptr<FrameBuffer> _frameBuffer;
+    std::unique_ptr<FrameBuffer> _frameBuffer;
     CALayer *_backingLayer;
-    CFTimeInterval _lastRenderTime;
+    std::atomic<CFTimeInterval> _lastRenderTime;
+    __block BOOL _shouldStartNewRender;
+    __block BOOL _isCurrentlyRendering;
+    dispatch_semaphore_t _renderSemaphore;
 }
 
 @end
@@ -66,6 +69,9 @@ public:
         _backingLayer = [CALayer new];
         _backingLayer.delegate = self;
         _backingLayer.actions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"contents", nil];
+        _shouldStartNewRender = YES;
+        _isCurrentlyRendering = NO;
+        _renderSemaphore = dispatch_semaphore_create(0);
     }
 
     return self;
@@ -81,35 +87,52 @@ public:
 
 - (void)render:(JTRenderer *)renderer state:(JTRenderState *)state sender:(JTDisplayLink *)sender {
     if (renderer.frameBufferResized || !_frameBuffer) {
-        _frameBuffer = std::make_shared<FrameBuffer>(renderer.frameBufferSize.width, renderer.frameBufferSize.height);
+        _shouldStartNewRender = YES;
     }
 
-    size_t pixelsToProcess = _frameBuffer->width * _frameBuffer->height;
-    uint2 dimensions;
-    dimensions.x = (unsigned int)_frameBuffer->width;
-    dimensions.y = (unsigned int)_frameBuffer->height;
+    if (_shouldStartNewRender && !_isCurrentlyRendering) {
+        if (!_frameBuffer ||
+            _frameBuffer->width != renderer.frameBufferSize.width ||
+            _frameBuffer->height != renderer.frameBufferSize.height) {
+            _frameBuffer = std::unique_ptr<FrameBuffer>(new FrameBuffer(renderer.frameBufferSize.width, renderer.frameBufferSize.height));
+        }
 
-    void (^pixelWork)(size_t) = ^(size_t i){
-        size_t x = i % _frameBuffer->width;
-        size_t y = (i - x) / _frameBuffer->width;
-        uint2 pos;
-        pos.x = (unsigned int)x;
-        pos.y = dimensions.y - (unsigned int)y; // Flip vertically to make bottom left (0,0)
-        ((packed::float4 *)_frameBuffer->data.data())[i] = jt::Trace::runTrace(*state.uniforms, pos, dimensions);
-    };
+        size_t pixelsToProcess = _frameBuffer->width * _frameBuffer->height;
+        uint2 dimensions;
+        dimensions.x = (unsigned int)_frameBuffer->width;
+        dimensions.y = (unsigned int)_frameBuffer->height;
 
-    NSDate* startTime = [NSDate new];
-    dispatch_apply(pixelsToProcess, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), pixelWork);
-    _lastRenderTime = -[startTime timeIntervalSinceNow];
-    NSLog(@"Render time: %f", _lastRenderTime);
+        void (^pixelWork)(size_t) = ^(size_t i){
+            if (_shouldStartNewRender)
+                return; // Exit immediately if we're trying to cancel.
+            uint2 pos;
+            pos.x = (unsigned int)(i % dimensions.x);
+            pos.y = dimensions.y - (unsigned int)((i - pos.x) / dimensions.x); // Flip vertically to make bottom left (0,0)
+            ((packed::float4 *)_frameBuffer->data.data())[i] = jt::Trace::runTrace(*state.uniforms, pos, dimensions);
+        };
+
+        _isCurrentlyRendering = YES;
+        _shouldStartNewRender = NO;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSDate* startTime = [NSDate new];
+            dispatch_apply(pixelsToProcess, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), pixelWork);
+            if (!_shouldStartNewRender) {
+                _lastRenderTime = -[startTime timeIntervalSinceNow]; // Only store the render time if the render completed.
+            }
+            _isCurrentlyRendering = NO;
+            _shouldStartNewRender = YES;
+        });
+    }
 
     [_backingLayer setNeedsDisplay];
 }
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-    CGImageRef displayImage = _frameBuffer->getImage();
-    CGContextDrawImage(ctx, layer.bounds, displayImage);
-    CGImageRelease(displayImage);
+    if (_frameBuffer) {
+        CGImageRef displayImage = _frameBuffer->getImage();
+        CGContextDrawImage(ctx, layer.bounds, displayImage);
+        CGImageRelease(displayImage);
+    }
 }
 
 @end

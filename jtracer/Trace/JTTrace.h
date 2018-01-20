@@ -36,8 +36,8 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
     float3 color = make_float3(0.0f, 0.0f, 0.0f);
     size_t samplesPerPixel = 128;
     for (size_t i = 0; i < samplesPerPixel; ++i) {
-        float u = (pos.x + random.nextNormalized()) / static_cast<float>(dimensions.x);
-        float v = (pos.y + random.nextNormalized()) / static_cast<float>(dimensions.y);
+        float u = (pos.x) / static_cast<float>(dimensions.x);
+        float v = (pos.y) / static_cast<float>(dimensions.y);
         Ray mainRay = camera.makeRay(u, v);
         if (world.hitTest(mainRay, hitRecord))
             color += 0.5f * (hitRecord.normal + 1);
@@ -46,7 +46,6 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
     }
 
     color /= samplesPerPixel;
-
     return make_float4(color, 1.0f);
 }
 

@@ -38,7 +38,7 @@
         _metalLayer.framebufferOnly = NO;
 
         id<MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
-        id<MTLFunction> jtKernel = [defaultLibrary newFunctionWithName:@"metalRender"];
+        id<MTLFunction> jtKernel = [defaultLibrary newFunctionWithName:@"runTraceMetal"];
 
         NSError *error = nil;
         _pipelineState = [_device newComputePipelineStateWithFunction:jtKernel error:&error];
@@ -68,6 +68,9 @@
         }
 
         id<CAMetalDrawable> drawable = [_metalLayer nextDrawable];
+        if (!drawable)
+            return;
+
         id<MTLTexture> texture = drawable.texture;
 
         id<MTLCommandBuffer> commandBuffer = _commandQueue.commandBuffer;

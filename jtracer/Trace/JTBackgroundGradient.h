@@ -17,7 +17,7 @@ public:
     BackgroundGradient() = default;
     ~BackgroundGradient() = default;
 
-    float3 color(JT_THREAD const Ray& ray) const
+    float3 color(Ray ray) const
     {
         float3 unitDirection = normalize(ray.directionAtOrigin());
         float normalizedY = (unitDirection.y + 1.0f) / 2.0f;
