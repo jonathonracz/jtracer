@@ -34,7 +34,6 @@
 - (void)update:(float)deltaSeconds {
     _uniformsInternal->frameCount++;
     _uniformsInternal->random = arc4random();
-    OpenSimplex::Seed::computeContextForSeed(_uniformsInternal->context, _uniformsInternal->frameCount);
 }
 
 @end

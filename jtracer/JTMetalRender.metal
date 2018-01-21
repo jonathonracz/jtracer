@@ -14,8 +14,6 @@ using namespace metal;
 
 #include "Trace/JTTrace.h"
 
-#include "OpenSimplex/OpenSimplex.h"
-
 kernel void runTraceMetal(texture2d<half, access::write> output [[texture(jt::TextureIndex::output)]],
                           JT_CONSTANT const jt::Uniforms& uniforms [[buffer(jt::BufferIndex::uniforms)]],
                           uint2 gid [[thread_position_in_grid]])

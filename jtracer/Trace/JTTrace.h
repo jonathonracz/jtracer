@@ -24,8 +24,6 @@ namespace Trace
 
 float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimensions)
 {
-    //float noiseValue = OpenSimplex::Noise::noise2(uniforms.context, pos.x, pos.y);
-    //uint32 noiseValueInt = reinterpret_cast<JT_THREAD uint32&>(noiseValue);
     PRNG random;
 
     // Create a sphere world.
