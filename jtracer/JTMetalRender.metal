@@ -11,7 +11,6 @@ using namespace metal;
 
 #include "Trace/JTShaderTypes.h"
 #include "Trace/JTBindPoints.h"
-#include "Trace/JTNumerics.h"
 
 #include "Trace/JTTrace.h"
 

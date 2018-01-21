@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  JTRenderViewController.mm
 //  jtracer
 //
 //  Created by Jonathon Racz on 12/20/17.
 //  Copyright © 2017 jonathonracz. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "JTRenderViewController.h"
 #import "JTDisplayLink.h"
 #import "JTMetalRender.h"
 #import "JTCGRender.h"
 #import "JTRenderState.h"
 
-@interface ViewController () {
+@interface JTRenderViewController () {
     JTRenderState *_renderState;
     JTDisplayLink *_displayLink;
     JTMetalRender *_metalView;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation ViewController
+@implementation JTRenderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  JTRenderViewController.h
 //  jtracer
 //
 //  Created by Jonathon Racz on 12/20/17.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
+@interface JTRenderViewController : NSViewController
 
 @end

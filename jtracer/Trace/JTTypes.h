@@ -23,6 +23,9 @@
     #include <iostream>
 #endif
 
+#define JT_UINT32_MAX 0xffffffffUL
+#define JT_UINT64_MAX 0xffffffffffffffffULL
+
 #include <simd/simd.h>
 using namespace simd;
 

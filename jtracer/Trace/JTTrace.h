@@ -13,7 +13,7 @@
 #include "JTRay.h"
 #include "JTSphere.h"
 #include "JTCamera.h"
-#include "JTNumerics.h"
+#include "JTRandom.h"
 #include "JTBackgroundGradient.h"
 
 namespace jt
@@ -24,7 +24,9 @@ namespace Trace
 
 float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimensions)
 {
-    PRNG random = PRNG(OpenSimplex::Noise::noise2(uniforms.context, pos.x, pos.y));
+    //float noiseValue = OpenSimplex::Noise::noise2(uniforms.context, pos.x, pos.y);
+    //uint32 noiseValueInt = reinterpret_cast<JT_THREAD uint32&>(noiseValue);
+    PRNG random;
 
     // Create a sphere world.
     Camera camera;
@@ -36,8 +38,8 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
     float3 color = make_float3(0.0f, 0.0f, 0.0f);
     size_t samplesPerPixel = 128;
     for (size_t i = 0; i < samplesPerPixel; ++i) {
-        float u = (pos.x) / static_cast<float>(dimensions.x);
-        float v = (pos.y) / static_cast<float>(dimensions.y);
+        float u = (pos.x + (random.generateNormal() - 0.5f)) / static_cast<float>(dimensions.x);
+        float v = (pos.y + (random.generateNormal() - 0.5f)) / static_cast<float>(dimensions.y);
         Ray mainRay = camera.makeRay(u, v);
         if (world.hitTest(mainRay, hitRecord))
             color += 0.5f * (hitRecord.normal + 1);
