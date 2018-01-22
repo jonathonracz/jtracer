@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <simd/simd.h>
 #include "JTTypes.h"
 #include "JTShaderTypes.h"
 
@@ -18,7 +17,13 @@ namespace jt
 class PRNG
 {
 public:
-    PRNG()
+    explicit PRNG(uint32 seed) :
+        x(seed)
+    {
+    }
+
+    explicit PRNG(uint32 seed1, uint32 seed2) :
+        x(seed1), y(seed2)
     {
     }
 
@@ -40,6 +45,11 @@ public:
         // TODO: in a distributed raytracing situation, this should be
         // 0 <= x < 1, but currently it's 0 <= x <= 1.
         return generate() / static_cast<float>(JT_UINT32_MAX);
+    }
+
+    float3 generateInUnitSphere()
+    {
+        return (2.0f * normalize(make_float3(generateNormal(), generateNormal(), generateNormal()))) - 1;
     }
 
 private:
