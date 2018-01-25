@@ -60,7 +60,7 @@
 		28B174451FEA381D003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28C6487F1FFF1A8100454706 /* JTRandom.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = JTRandom.h; sourceTree = "<group>"; };
 		28C648821FFF247700454706 /* JTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTTypes.h; sourceTree = "<group>"; };
-		28D27E0D200829AF003D055E /* JTBRDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBRDF.h; sourceTree = "<group>"; };
+		28D27E0D200829AF003D055E /* JTBSDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBSDF.h; sourceTree = "<group>"; };
 		28D27E0E20082FB0003D055E /* JTDisplayLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTDisplayLink.h; sourceTree = "<group>"; };
 		28D27E0F20082FB0003D055E /* JTDisplayLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTDisplayLink.m; sourceTree = "<group>"; };
 		28D27E1420092F6E003D055E /* JTRenderState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTRenderState.h; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 				2834A69F1FFD57EF00267954 /* JTShaderTypes.h */,
 				28C6487F1FFF1A8100454706 /* JTRandom.h */,
 				28C648821FFF247700454706 /* JTTypes.h */,
-				28D27E0D200829AF003D055E /* JTBRDF.h */,
+				28D27E0D200829AF003D055E /* JTBSDF.h */,
 				28D27E1D200AD081003D055E /* JTTrace.h */,
 				28D27E1E200D6974003D055E /* JTRay.h */,
 				282B906C200E7DD800889ED9 /* JTSphere.h */,

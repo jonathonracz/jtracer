@@ -13,12 +13,14 @@
     #define JT_THREADGROUP threadgroup
     #define JT_CONSTANT constant
     #define JT_THREAD thread
+    #include <metal_stdlib>
 #else
     #define JT_DEVICE
     #define JT_THREADGROUP
     #define JT_CONSTANT
     #define JT_THREAD
     #include <cstdint>
+    #include <cmath>
     #include <array>
     #include <iostream>
 #endif
@@ -81,5 +83,39 @@ namespace jt
     template <class T, size_t N>
     using array = std::array<T, N>;
 #endif
+
+    namespace Math
+    {
+#ifdef __METAL_VERSION__
+        using metal::sqrt;
+        using metal::cos;
+        using metal::acos;
+#else
+        using std::sqrt;
+        using std::cos;
+        using std::acos;
+#endif
+
+        template<typename T>
+        inline T square(T x)
+        {
+            return x * x;
+        }
+
+        template<typename T, typename V>
+        inline T angleBetween(V v1, V v2)
+        {
+            return acos(dot(v1, v2) / (length(v1) * length(v2)));
+        }
+
+        namespace Constants
+        {
+#ifdef __METAL_VERSION__
+            JT_CONSTANT const float pi = M_PI_F;
+#else
+            const float pi = M_PI;
+#endif
+        }
+    }
 
 }

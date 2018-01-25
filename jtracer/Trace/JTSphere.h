@@ -10,6 +10,7 @@
 
 #include "JTTypes.h"
 #include "JTRay.h"
+#include "JTBSDF.h"
 
 namespace jt
 {
