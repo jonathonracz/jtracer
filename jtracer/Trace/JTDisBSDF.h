@@ -1,11 +1,10 @@
 //
-//  JTBSDF.h
+//  JTDisBSDF.h
 //  jtracer
 //
 //  Created by Jonathon Racz on 1/11/18.
 //  Copyright © 2018 jonathonracz. All rights reserved.
 //
-
 
 #include <simd/simd.h>
 using namespace simd;
@@ -14,7 +13,7 @@ namespace jt
 {
 
 // Based on the Disney microfacet model.
-class BSDF
+class DisBSDF
 {
 public:
     class Parameters
@@ -60,7 +59,7 @@ public:
         inline void setScatterDistance(float _scatterDistance) { scatterDistance = _scatterDistance; }
 
     private:
-        friend class BSDF;
+        friend class DisBSDF;
         float3 baseColor;
         float subsurface;
         float metallic;
@@ -83,10 +82,10 @@ public:
         }
     };
 
-    BSDF(JT_CONSTANT const Parameters& _params) :
+    DisBSDF(JT_CONSTANT const Parameters& _params) :
         params(_params) {}
 
-    float calcBSDF(float3 light, float3 view, float3 normal)
+    float calcDisBSDF(float3 light, float3 view, float3 normal)
     {
         //simd::vec3 half = (light + view) /
         return 1.0f;
@@ -94,12 +93,6 @@ public:
 
 private:
     JT_CONSTANT const Parameters& params;
-
-    float3 diffuse(float lightAngle, float viewAngle, float diffuseAngle) const
-    {
-        float3 baseColorOverPi = params.baseColor / Math::Constants::pi;
-        return baseColorOverPi;
-    }
 
     inline float indexOfRefractionEnteringMaterial(float fromIOR = 1.0f) const
     {
@@ -109,6 +102,18 @@ private:
     inline float indexOfRefractionExitingMaterial(float toIOR = 1.0f) const
     {
         return toIOR / params.indexOfRefraction;
+    }
+
+    float3 diffuse(float lightAngle, float viewAngle, float diffuseAngle) const
+    {
+        float fresnelLight = Math::power(1 - Math::cos(lightAngle), 5);
+        float fresnelView = Math::power(1 - Math::cos(viewAngle), 5);
+        float reflectionRoughness = 2.0f * params.roughness * Math::square(Math::cos(diffuseAngle));
+
+        float3 fLambert = params.baseColor / Math::Constants::pi;
+        float3 fRetroReflection = fLambert * reflectionRoughness * (fresnelLight + fresnelView + (fresnelLight * fresnelView * (reflectionRoughness - 1.0f)));
+        float3 fDiffuse = (fLambert * (1.0f - (0.5f * fresnelLight)) * (1.0f - (0.5f * fresnelView))) + fRetroReflection;
+        return fDiffuse;
     }
 
     float fresnel(float incidentAngle) const

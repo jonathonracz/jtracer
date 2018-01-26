@@ -108,6 +108,33 @@ namespace jt
             return acos(dot(v1, v2) / (length(v1) * length(v2)));
         }
 
+        inline float power(float x, uint32 n)
+        {
+            // Use iterative exponentiation by squaring.
+            if (n == 0)
+            {
+                return 1.0f;
+            }
+
+            float y = 1.0f;
+            while (n > 1)
+            {
+                if (n % 2)
+                {
+                    x *= x;
+                    n /= 2;
+                }
+                else
+                {
+                    y *= x;
+                    x *= x;
+                    n = (n - 1) / 2;
+                }
+            }
+
+            return x * y;
+        }
+
         namespace Constants
         {
 #ifdef __METAL_VERSION__
