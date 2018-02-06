@@ -23,6 +23,7 @@
     #include <cmath>
     #include <array>
     #include <iostream>
+    #include <cassert>
 #endif
 
 #define JT_UINT32_MAX 0xffffffffUL
@@ -108,6 +109,14 @@ namespace jt
             return acos(dot(v1, v2) / (length(v1) * length(v2)));
         }
 
+        template<typename T>
+        inline T reflect(T i, T n)
+        {
+            // Assert because I know I'm going to mess this up at some point...
+            assert(normalize(n) == n);
+            return i - (2 * dot(n, i) * n);
+        }
+
         inline float power(float x, uint32 n)
         {
             // Use iterative exponentiation by squaring.
@@ -133,6 +142,63 @@ namespace jt
             }
 
             return x * y;
+        }
+
+        float3 slerp(float3 x, float3 y, float t);
+        {
+            assert(normalize(x) == x);
+            assert(normalize(y) == y);
+            assert(0.0f <= t && t <= 1.0f);
+            float omega = acos(dot(x, y));
+            float comp1 = (sin((1 - t) * omega) / sin(omega)) * x;
+            float comp2 = (sin(t * omega) / sin(omega)) * y;
+            return comp1 + comp2;
+        }
+
+        namespace Fast
+        {
+            inline float floor(float x)
+            {
+                int64 xInt = static_cast<int64>(x);
+                if (xInt == x)
+                    return x;
+                else if (x > 0)
+                    return static_cast<float>(x);
+                else
+                    return static_cast<float>(xInt - 1);
+            }
+
+            // log2, pow2, pow are based on
+            // http://www.dctsystems.co.uk/Software/power.c
+            // and I'm not going to pretend I understand how they work.
+            inline float log2(float x)
+            {
+                const float logBodge = 0.346607f;
+                float y, z;
+                y = *(JT_THREAD int*)&x;
+                y *= 1.0 / (1 << 23);
+                y = y - 127;
+                z = y - floor(y);
+                z = (z - z * z) * logBodge;
+                return y + z;
+            }
+
+            inline float pow2(float x)
+            {
+                const float powBodge = 0.33971f;
+                float y, z;
+                z = x - floor(x);
+                z = (z - z * z) * powBodge;
+                y = x + 127 - z;
+                y *= (1 << 23);
+                *(JT_THREAD int*)&y = (int)y;
+                return y;
+            }
+
+            inline float pow(float x, float y)
+            {
+                return pow2(y * log2(x));
+            }
         }
 
         namespace Constants

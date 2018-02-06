@@ -15,6 +15,7 @@
 #include "JTCamera.h"
 #include "JTRandom.h"
 #include "JTBackgroundGradient.h"
+#include "JTBSDF.h"
 
 namespace jt
 {
@@ -45,11 +46,14 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
         uint64 numBounces = 0;
         do
         {
-            didHit = world.hitTest(ray, hitRecord);
+            didHit = world.hitTest(ray, hitRecord, 0.001f);
             if (didHit)
             {
                 numBounces++;
-                float3 target = hitRecord.p + hitRecord.normal + random.generateInUnitSphere();
+                float3 incidentRay = normalize(ray.directionAtOrigin());
+                float3 normal = hitRecord.normal;
+                float3 scattered = BSDF::scatter(random, hitRecord.materialParams, incidentRay, normal);
+                float3 target = hitRecord.p + scattered;
                 ray = Ray(hitRecord.p, target - hitRecord.p);
             }
             else
@@ -67,6 +71,12 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
     }
 
     pixelColor /= samplesPerPixel;
+
+    // Gamma correct the pixel by converting to linear space lighting.
+    // Based on http://frictionalgames.blogspot.com/2013/11/
+    for (int i = 0; i < 3; ++i)
+        pixelColor[i] = Math::Fast::pow(pixelColor[i], 1.0f / 2.2f);
+
     return make_float4(pixelColor, 1.0f);
 }
 

@@ -58,6 +58,7 @@
 		28B1743F1FEA381D003AD1DC /* jtracerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jtracerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B174431FEA381D003AD1DC /* jtracerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jtracerTests.m; sourceTree = "<group>"; };
 		28B174451FEA381D003AD1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28C059C1201BA16F00F6DDF5 /* JTBSDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBSDF.h; sourceTree = "<group>"; };
 		28C6487F1FFF1A8100454706 /* JTRandom.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = JTRandom.h; sourceTree = "<group>"; };
 		28C648821FFF247700454706 /* JTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTTypes.h; sourceTree = "<group>"; };
 		28D27E0D200829AF003D055E /* JTDisBSDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTDisBSDF.h; sourceTree = "<group>"; };
@@ -161,17 +162,18 @@
 		28C6487E1FFF19B900454706 /* Trace */ = {
 			isa = PBXGroup;
 			children = (
+				2886ED3D2011544F0044FF3F /* JTBackgroundGradient.h */,
 				2823DD252000070E00BE7F9A /* JTBindPoints.h */,
-				2834A69F1FFD57EF00267954 /* JTShaderTypes.h */,
-				28C6487F1FFF1A8100454706 /* JTRandom.h */,
-				28C648821FFF247700454706 /* JTTypes.h */,
+				28C059C1201BA16F00F6DDF5 /* JTBSDF.h */,
+				28287E8920107071001901D4 /* JTCamera.h */,
 				28D27E0D200829AF003D055E /* JTDisBSDF.h */,
-				28D27E1D200AD081003D055E /* JTTrace.h */,
+				28C6487F1FFF1A8100454706 /* JTRandom.h */,
 				28D27E1E200D6974003D055E /* JTRay.h */,
+				2834A69F1FFD57EF00267954 /* JTShaderTypes.h */,
 				282B906C200E7DD800889ED9 /* JTSphere.h */,
 				282B906D200EBC9400889ED9 /* JTSphereList.h */,
-				28287E8920107071001901D4 /* JTCamera.h */,
-				2886ED3D2011544F0044FF3F /* JTBackgroundGradient.h */,
+				28D27E1D200AD081003D055E /* JTTrace.h */,
+				28C648821FFF247700454706 /* JTTypes.h */,
 			);
 			path = Trace;
 			sourceTree = "<group>";

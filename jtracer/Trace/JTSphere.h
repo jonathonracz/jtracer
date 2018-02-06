@@ -23,6 +23,7 @@ public:
         float t;
         float3 p;
         float3 normal;
+        JT_THREAD const BSDF::Parameters* materialParams;
     };
 
     Sphere() = default;
@@ -45,6 +46,7 @@ public:
                 record.t = root1;
                 record.p = ray.pointAtParam(root1);
                 record.normal = (record.p - center) / radius;
+                record.materialParams = &materialParams;
                 return true;
             }
 
@@ -54,6 +56,7 @@ public:
                 record.t = root2;
                 record.p = ray.pointAtParam(root2);
                 record.normal = (record.p - center) / radius;
+                record.materialParams = &materialParams;
                 return true;
             }
         }
@@ -63,6 +66,7 @@ public:
 
     float3 center;
     float radius;
+    BSDF::Parameters materialParams;
 };
 
 }
