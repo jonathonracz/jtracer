@@ -51,8 +51,7 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
             {
                 numBounces++;
                 float3 incidentRay = normalize(ray.directionAtOrigin());
-                float3 normal = hitRecord.normal;
-                float3 scattered = BSDF::scatter(random, hitRecord.materialParams, incidentRay, normal);
+                float3 scattered = BSDF::scatter(random, hitRecord.materialParams, incidentRay, hitRecord.normal);
                 float3 target = hitRecord.p + scattered;
                 ray = Ray(hitRecord.p, target - hitRecord.p);
             }
@@ -74,8 +73,7 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
 
     // Gamma correct the pixel by converting to linear space lighting.
     // Based on http://frictionalgames.blogspot.com/2013/11/
-    for (int i = 0; i < 3; ++i)
-        pixelColor[i] = Math::Fast::pow(pixelColor[i], 1.0f / 2.2f);
+    pixelColor = pow(pixelColor, float3(1.0f / 2.2f));
 
     return make_float4(pixelColor, 1.0f);
 }

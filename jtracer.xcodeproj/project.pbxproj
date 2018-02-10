@@ -142,10 +142,10 @@
 				28D27E1820095ACD003D055E /* JTRenderer.mm */,
 				28D27E1420092F6E003D055E /* JTRenderState.h */,
 				28D27E1520092F6E003D055E /* JTRenderState.mm */,
-				28B174381FEA381D003AD1DC /* main.m */,
-				28B174341FEA381C003AD1DC /* Main.storyboard */,
 				28B1742F1FEA381C003AD1DC /* JTRenderViewController.h */,
 				28B174301FEA381C003AD1DC /* JTRenderViewController.mm */,
+				28B174381FEA381D003AD1DC /* main.m */,
+				28B174341FEA381C003AD1DC /* Main.storyboard */,
 			);
 			path = jtracer;
 			sourceTree = "<group>";

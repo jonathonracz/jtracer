@@ -36,11 +36,11 @@ using namespace simd;
 // Redefine SIMD functions that are missing in Metal...
 namespace metal
 {
-    constexpr inline float2 make_float2(float x, float y) { return float2(x, y); }
-    constexpr inline float3 make_float3(float x, float y, float z) { return float3(x, y, z); }
-    constexpr inline float4 make_float4(float x, float y, float z, float w) { return float4(x, y, z, w); }
+    constexpr float2 make_float2(float x, float y) { return float2(x, y); }
+    constexpr float3 make_float3(float x, float y, float z) { return float3(x, y, z); }
+    constexpr float4 make_float4(float x, float y, float z, float w) { return float4(x, y, z, w); }
 
-    constexpr inline float4 make_float4(float3 xyz, float w) { return float4(xyz, w); }
+    constexpr float4 make_float4(float3 xyz, float w) { return float4(xyz, w); }
 
     inline bool equal(float2 x, float2 y) { return (x.x == y.x && x.y == y.y); }
     inline bool equal(float3 x, float3 y) { return (equal(x.xy, y.xy) && x.z == y.z); }
@@ -88,9 +88,9 @@ namespace jt
     namespace Math
     {
 #ifdef __METAL_VERSION__
-        using metal::sqrt;
-        using metal::cos;
-        using metal::acos;
+        using metal::fast::sqrt;
+        using metal::fast::cos;
+        using metal::fast::acos;
 #else
         using std::sqrt;
         using std::cos;
@@ -112,93 +112,20 @@ namespace jt
         template<typename T>
         inline T reflect(T i, T n)
         {
-            // Assert because I know I'm going to mess this up at some point...
-            assert(normalize(n) == n);
+            assert(equal(normalize(n), n));
+            assert(equal(normalize(i), i));
             return i - (2 * dot(n, i) * n);
         }
 
-        inline float power(float x, uint32 n)
+        inline float3 slerp(float3 x, float3 y, float t)
         {
-            // Use iterative exponentiation by squaring.
-            if (n == 0)
-            {
-                return 1.0f;
-            }
-
-            float y = 1.0f;
-            while (n > 1)
-            {
-                if (n % 2)
-                {
-                    x *= x;
-                    n /= 2;
-                }
-                else
-                {
-                    y *= x;
-                    x *= x;
-                    n = (n - 1) / 2;
-                }
-            }
-
-            return x * y;
-        }
-
-        float3 slerp(float3 x, float3 y, float t);
-        {
-            assert(normalize(x) == x);
-            assert(normalize(y) == y);
+            assert(equal(normalize(x), x));
+            assert(equal(normalize(y), y));
             assert(0.0f <= t && t <= 1.0f);
             float omega = acos(dot(x, y));
-            float comp1 = (sin((1 - t) * omega) / sin(omega)) * x;
-            float comp2 = (sin(t * omega) / sin(omega)) * y;
+            float3 comp1 = (sin((1 - t) * omega) / sin(omega)) * x;
+            float3 comp2 = (sin(t * omega) / sin(omega)) * y;
             return comp1 + comp2;
-        }
-
-        namespace Fast
-        {
-            inline float floor(float x)
-            {
-                int64 xInt = static_cast<int64>(x);
-                if (xInt == x)
-                    return x;
-                else if (x > 0)
-                    return static_cast<float>(x);
-                else
-                    return static_cast<float>(xInt - 1);
-            }
-
-            // log2, pow2, pow are based on
-            // http://www.dctsystems.co.uk/Software/power.c
-            // and I'm not going to pretend I understand how they work.
-            inline float log2(float x)
-            {
-                const float logBodge = 0.346607f;
-                float y, z;
-                y = *(JT_THREAD int*)&x;
-                y *= 1.0 / (1 << 23);
-                y = y - 127;
-                z = y - floor(y);
-                z = (z - z * z) * logBodge;
-                return y + z;
-            }
-
-            inline float pow2(float x)
-            {
-                const float powBodge = 0.33971f;
-                float y, z;
-                z = x - floor(x);
-                z = (z - z * z) * powBodge;
-                y = x + 127 - z;
-                y *= (1 << 23);
-                *(JT_THREAD int*)&y = (int)y;
-                return y;
-            }
-
-            inline float pow(float x, float y)
-            {
-                return pow2(y * log2(x));
-            }
         }
 
         namespace Constants

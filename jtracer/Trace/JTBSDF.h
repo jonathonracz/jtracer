@@ -20,15 +20,15 @@ namespace BSDF
 struct Parameters
 {
     float3 baseColor;
-    float roughness;
+    float roughness = 0.5f;
 };
 
-inline float3 scatter(JT_THREAD PRNG& random, JT_THREAD const Parameters* params, float3 incidentRay, float3 normal)
+inline float3 scatter(JT_THREAD PRNG& random, JT_THREAD const Parameters* params, float3 incident, float3 normal)
 {
-    float3 ret = make_float3(0.0f, 0.0f, 0.0f);
-    ret += random.generateInUnitSphere();
-    
-    return ret;
+    float3 reflection = Math::reflect(incident, normal);
+    float3 diffuse = random.generateInUnitSphere();
+    float3 scattered = Math::slerp(reflection, diffuse, params->roughness);
+    return scattered;
 }
 
 };
