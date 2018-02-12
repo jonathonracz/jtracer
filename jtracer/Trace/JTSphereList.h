@@ -23,19 +23,20 @@ public:
 
     bool hitTest(JT_THREAD const Ray& ray, JT_THREAD Sphere::HitRecord& record, float tMin = 0.0f, float tMax = INFINITY) const
     {
-        Sphere::HitRecord tempRecord;
         bool hitSomething = false;
         float tClosest = tMax;
         for (size_t i = 0; i < num; ++i)
         {
+            Sphere::HitRecord testRecord;
             Sphere sphere = spheres[i];
-            if (sphere.hitTest(ray, tempRecord, tMin, tClosest))
+            if (sphere.hitTest(ray, testRecord, tMin, tClosest))
             {
                 hitSomething = true;
-                tClosest = tempRecord.t;
-                record = tempRecord;
+                tClosest = testRecord.t;
+                record = testRecord;
             }
         }
+
         return hitSomething;
     }
 

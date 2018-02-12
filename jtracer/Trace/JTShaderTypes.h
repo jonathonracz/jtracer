@@ -20,7 +20,7 @@ struct Uniforms
     OpenSimplex::Context context;
     uint32 frameCount = 0;
     uint32 random;
-    Sphere spheres[2];
+    Sphere spheres[4];
 };
 
 }

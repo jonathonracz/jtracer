@@ -40,8 +40,8 @@
 
 - (void)renderViews:(JTDisplayLink *)sender {
     [_renderState update:_displayLink.timestamp];
-    [self.metalRenderer render:_renderState sender:_displayLink];
-    //[self.cgRenderer render:_renderState sender:_displayLink];
+    //[self.metalRenderer render:_renderState sender:_displayLink];
+    [self.cgRenderer render:_renderState sender:_displayLink];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

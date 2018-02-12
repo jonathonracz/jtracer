@@ -112,20 +112,14 @@ namespace jt
         template<typename T>
         inline T reflect(T i, T n)
         {
-            assert(equal(normalize(n), n));
-            assert(equal(normalize(i), i));
             return i - (2 * dot(n, i) * n);
         }
 
-        inline float3 slerp(float3 x, float3 y, float t)
+        /** Lerp from x to y. */
+        template<typename T>
+        inline T lerp(T x, T y, float t)
         {
-            assert(equal(normalize(x), x));
-            assert(equal(normalize(y), y));
-            assert(0.0f <= t && t <= 1.0f);
-            float omega = acos(dot(x, y));
-            float3 comp1 = (sin((1 - t) * omega) / sin(omega)) * x;
-            float3 comp2 = (sin(t * omega) / sin(omega)) * y;
-            return comp1 + comp2;
+            return ((y - x) * t) + x;
         }
 
         namespace Constants

@@ -113,9 +113,9 @@ public:
 
         _isCurrentlyRendering = YES;
         _shouldStartNewRender = NO;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSDate* startTime = [NSDate new];
-            dispatch_apply(pixelsToProcess, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), pixelWork);
+            dispatch_apply(pixelsToProcess, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), pixelWork);
             if (!_shouldStartNewRender) {
                 _lastRenderTime = -[startTime timeIntervalSinceNow]; // Only store the render time if the render completed.
             }

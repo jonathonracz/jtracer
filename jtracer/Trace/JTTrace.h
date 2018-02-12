@@ -41,32 +41,39 @@ float4 runTrace(JT_CONSTANT const Uniforms& uniforms, uint2 pos, uint2 dimension
         float v = (pos.y + (random.generateNormal() - 0.5f)) / static_cast<float>(dimensions.y);
         Ray ray = camera.makeRay(u, v);
         Sphere::HitRecord hitRecord;
-        float3 rayColor = make_float3(0.0f, 0.0f, 0.0f);
-        bool didHit = false;
+        bool finalColorComputed = false;
+        float3 finalRayColor = make_float3(0.0f, 0.0f, 0.0f);
+        float3 rayColorAccumulator = make_float3(0.0f, 0.0f, 0.0f);
         uint64 numBounces = 0;
+        float reflection = 1.0f;
         do
         {
-            didHit = world.hitTest(ray, hitRecord, 0.001f);
-            if (didHit)
+            bool didHit = world.hitTest(ray, hitRecord, 0.001f);
+            if (didHit && reflection > 0.0f)
             {
                 numBounces++;
-                float3 incidentRay = normalize(ray.directionAtOrigin());
-                float3 scattered = BSDF::scatter(random, hitRecord.materialParams, incidentRay, hitRecord.normal);
+                rayColorAccumulator += hitRecord.materialParams.albedo;
+                reflection *= hitRecord.materialParams.reflectivity; // TODO: Fresnel-based reflection
+                float3 incident = normalize(ray.directionAtOrigin());
+                float3 normal = normalize(hitRecord.normal); // Sometimes the floating point error is a bit off and freaks out asserts...
+                float3 scattered = BSDF::scatter(random, hitRecord.materialParams, incident, normal);
                 float3 target = hitRecord.p + scattered;
                 ray = Ray(hitRecord.p, target - hitRecord.p);
             }
             else
             {
-                rayColor = gradient.color(ray);
+                float3 lightColor = gradient.color(ray);
                 if (numBounces > 0)
-                {
-                    rayColor *= (0.5f / numBounces);
-                }
+                    finalRayColor = lightColor * (rayColorAccumulator / numBounces) * reflection;
+                else
+                    finalRayColor = lightColor;
+
+                finalColorComputed = true;
             }
         }
-        while (didHit);
+        while (!finalColorComputed);
 
-        pixelColor += rayColor;
+        pixelColor += finalRayColor;
     }
 
     pixelColor /= samplesPerPixel;

@@ -20,8 +20,23 @@
     self = [super init];
     if (self) {
         _uniformsInternal = std::unique_ptr<jt::Uniforms>(new jt::Uniforms);
-        _uniformsInternal->spheres[0] = jt::Sphere(make_float3(0.0f, 0.0f, -1.0f), 0.5f);
-        _uniformsInternal->spheres[1] = jt::Sphere(make_float3(0.0f, -100.5f, -1.0f), 100.0f);
+        _uniformsInternal->spheres[0] = jt::Sphere(make_float3(-1.0f, 0.0f, -1.0f), 0.5f);
+        _uniformsInternal->spheres[1] = jt::Sphere(make_float3(0.0f, 0.0f, -1.0f), 0.5f);
+        _uniformsInternal->spheres[2] = jt::Sphere(make_float3(1.0f, 0.0f, -1.0f), 0.5f);
+        _uniformsInternal->spheres[3] = jt::Sphere(make_float3(0.0f, -100.5f, -1.0f), 100.0f);
+
+
+        _uniformsInternal->spheres[0].materialParams.albedo = make_float3(1.0f, 0.0f, 0.0f);
+        _uniformsInternal->spheres[0].materialParams.roughness = 1.0f;
+        _uniformsInternal->spheres[0].materialParams.reflectivity = 1.0f;
+
+        _uniformsInternal->spheres[1].materialParams.albedo = make_float3(0.0f, 1.0f, 0.0f);
+        _uniformsInternal->spheres[1].materialParams.roughness = 0.5f;
+        _uniformsInternal->spheres[1].materialParams.reflectivity = 0.5f;
+
+        _uniformsInternal->spheres[2].materialParams.albedo = make_float3(0.0f, 0.0f, 1.0f);
+        _uniformsInternal->spheres[2].materialParams.roughness = 1.0f;
+        _uniformsInternal->spheres[2].materialParams.reflectivity = 1.0f;
     }
 
     return self;

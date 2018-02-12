@@ -19,15 +19,23 @@ namespace BSDF
 
 struct Parameters
 {
-    float3 baseColor;
-    float roughness = 0.5f;
+    float3 albedo = make_float3(1.0f, 1.0f, 1.0f);
+    float roughness = 1.0f;
+    float reflectivity = 0.5f;
 };
 
-inline float3 scatter(JT_THREAD PRNG& random, JT_THREAD const Parameters* params, float3 incident, float3 normal)
+inline float3 scatter(JT_THREAD PRNG& random, JT_THREAD const Parameters& params, JT_THREAD const float3& incident, JT_THREAD const float3& normal)
 {
     float3 reflection = Math::reflect(incident, normal);
     float3 diffuse = random.generateInUnitSphere();
-    float3 scattered = Math::slerp(reflection, diffuse, params->roughness);
+    // Make sure the diffuse ray is actually a reflection - i.e. leaving the
+    // object.
+    if (dot(diffuse, normal) < 0)
+        diffuse *= -1.0f;
+
+    // TODO: This may be better off as a slerp so there isn't a lopsided
+    // resolution between the center and edges of the interpolation...
+    float3 scattered = Math::lerp(reflection, diffuse, params.roughness);
     return scattered;
 }
 
