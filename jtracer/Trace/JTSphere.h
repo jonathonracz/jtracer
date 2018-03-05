@@ -20,7 +20,7 @@ class Sphere
 public:
     struct HitRecord
     {
-        float t;
+        float t = INFINITY;
         float3 p;
         float3 normal;
         BSDF::Parameters materialParams;

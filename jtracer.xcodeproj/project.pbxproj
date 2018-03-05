@@ -72,6 +72,7 @@
 		28D27E1B200A7079003D055E /* JTCGRender.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JTCGRender.mm; sourceTree = "<group>"; };
 		28D27E1D200AD081003D055E /* JTTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTTrace.h; sourceTree = "<group>"; };
 		28D27E1E200D6974003D055E /* JTRay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTRay.h; sourceTree = "<group>"; };
+		B45291C48DD11DD635616B89 /* JTPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTPath.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +175,7 @@
 				282B906D200EBC9400889ED9 /* JTSphereList.h */,
 				28D27E1D200AD081003D055E /* JTTrace.h */,
 				28C648821FFF247700454706 /* JTTypes.h */,
+				B45291C48DD11DD635616B89 /* JTPath.h */,
 			);
 			path = Trace;
 			sourceTree = "<group>";

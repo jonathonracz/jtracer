@@ -27,8 +27,6 @@ public:
     {
     }
 
-    ~PRNG() = default;
-
     uint32 generate()
     {
         uint32 t = (x ^ (x >> 2));
@@ -45,6 +43,17 @@ public:
         // TODO: in a distributed raytracing situation, this should be
         // 0 <= x < 1, but currently it's 0 <= x <= 1.
         return generate() / static_cast<float>(JT_UINT32_MAX);
+    }
+
+    float generateNormalNotIncluding1()
+    {
+        float ret;
+        // Algorithmically gross (theoretically unbounded), but it will do...
+        do
+        {
+            ret = generateNormal();
+        } while (ret == 1.0f);
+        return ret;
     }
 
     float3 generateInUnitSphere()

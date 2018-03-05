@@ -110,9 +110,16 @@ namespace jt
         }
 
         template<typename T>
-        inline T reflect(T i, T n)
+        inline T reflect(T incident, T normal)
         {
-            return i - (2 * dot(n, i) * n);
+            return incident - (2 * dot(normal, incident) * normal);
+        }
+
+        template<typename T>
+        inline T refract(T incident, T normal, float ior0, float ior1)
+        {
+            // TODO: Write own refract function
+            return refract(incident, normal, ior0 / ior1);
         }
 
         /** Lerp from x to y. */
