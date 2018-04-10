@@ -8,9 +8,9 @@ The implementation found in [`jtracer/Trace`](jtracer/Trace) is designed to be e
 
 The frontend is written in Objective-C++. It is tested with Xcode 9.3 under macOS 10.13.4. The UI is extremely simple - all options are hardcoded within the app. On startup the main window will display two views: the top is a GPU-compute render via Metal, and the bottom is a multicore CPU render scheduled by `libdispatch` (Grand Central Dispatch). Below is a screenshot:
 
-<center>
+<p align="center">
 <img src="https://github.com/jonathonracz/jtracer/blob/master/screenshot.png?raw=true" width = 619 alt="Screenshot, as described above.">
-</center>
+</p>
 
 ## TODO
 
