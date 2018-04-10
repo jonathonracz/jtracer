@@ -1,8 +1,8 @@
 # jtracer
 
-**jtracer** is a C++ raytracer capable of running either on the CPU (multithreaded or non-multithreaded) or as an Apple Metal compute kernel.
+**jtracer** is a C++ path tracer capable of running either on the CPU (multithreaded or non-multithreaded) or as an Apple Metal compute kernel.
 
-The raytracer was originally based on the implementation guide given by Peter Shirley's excellent ebook [Ray Tracing In One Weekend](http://a.co/4ShfDEg). The algorithms were modified to make the raytracer non-allocating (i.e. non stack based) by using color/light accumulators with a single ray object to trace through the scene.
+The path tracer was originally based on the implementation guide given by Peter Shirley's excellent ebook [Ray Tracing In One Weekend](http://a.co/4ShfDEg). The algorithms were modified to make the raytracer non-allocating (i.e. non stack based) by using color/light accumulators with a single ray object to trace through the scene.
 
 The implementation found in [`jtracer/Trace`](jtracer/Trace) is designed to be extremely portable. It is a header-only implementation of a general GPU-compute compatible raytracer from a per-pixel standpoint given a set of scene parameters (in this case, a bunch of spheres). In theory, it should work in an OpenCL C++ or CUDA environment with little modification - likely just some system-specific definitions in [`JTTypes.h`](jtracer/Trace/JTTypes.h).
 
