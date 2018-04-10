@@ -29,6 +29,7 @@
         _uniformsInternal->spheres[0].materialParams.albedo = make_float3(1.0f, 0.0f, 0.0f);
         _uniformsInternal->spheres[0].materialParams.roughness = 0.0f;
         _uniformsInternal->spheres[0].materialParams.reflectivity = 1.0f;
+        _uniformsInternal->spheres[0].materialParams.transparency = 1.0f;
 
         _uniformsInternal->spheres[1].materialParams.albedo = make_float3(0.0f, 1.0f, 0.0f);
         _uniformsInternal->spheres[1].materialParams.roughness = 0.25f;

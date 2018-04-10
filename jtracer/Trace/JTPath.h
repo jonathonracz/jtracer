@@ -23,7 +23,7 @@ public:
     {
     }
 
-    float3 trace(JT_THREAD Ray ray)
+    float3 trace(Ray ray)
     {
         Sphere::HitRecord hitRecord;
 
